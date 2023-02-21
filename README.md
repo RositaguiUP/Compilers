@@ -1,2 +1,2 @@
 # Compilers
-Repository for activities and projects of my Cimpilers class
+Repository for activities and projects of my Compilers class
