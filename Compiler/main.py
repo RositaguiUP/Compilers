@@ -9,84 +9,9 @@
 # Example: python .\main.py .\ArchivoPrueba.up .\ArchivoPrueba.lex
 
 import sys
+from lexFunctions import *
+from stateFunctions import *
 
-# *************** FUNCTIONS ***************
-
-# Function to check if a character is a number by its ASCII
-# Input: value to check
-# Output: boolean, true if is numeric, false if not
-def isNumeric(val):
-	for d in val:
-		if not (ord(d) >= 48 and ord(d) <= 57):
-			return False
-	return True
-
-# Function to check if a character is a space
-# Input: value of the character to check
-# Output: boolean, true if is a space, false if not
-def isSpace(val):
-	return (val == ' ' or val == "\t" or val == "\n")
-
-# Function to check if is any token
-# Input: value to check
-# Output: the token key if is part of any, -1 if not
-def clsfLex(lex):
-	clsf = -1
-	for t in keysList:
-		if lex in tokens[t]:
-			clsf = t
-			break
-	return clsf
-
-# Function to split a string by defined delimeters
-# Input: string to split, delimeters
-# Output: list with all the elements of the splitted string
-def split_with_delimiters(text, delimiters):
-    parts = []
-    current_part = ""
-    for char in text:
-        if char in delimiters:
-            if current_part:
-                parts.append(current_part)
-            parts.append(char)
-            current_part = ""
-        else:
-            current_part += char
-    if current_part:
-        parts.append(current_part)
-    return parts
-
-# Function to check if the element is an identifier
-# Input: actual token of the element, element
-# Output: boolean, true if is an identifier, false if not
-def isTokenIdentifier(token, e):
-	if token == keysList[4]: 			# PalRes
-		return (e in {"funcion", "procedimiento", "variables", "constantes"})
-	return False
-
-# *************** VARIABLES ***************
-
-tokens = {
-	"<Delim>":   set([".", ",", ";", "(", ")", "[", "]", ":", "\n", "\t"]),    #Together
-	"<OpArit>":  set(["+", "-", "*", "/", "%", "^"]),                          #Together
-	"<OpRel>":   set(["=", "<>", "<", ">", "<=", ">="]),                       #Together 
-	"<OpLog>":   set(["y", "o", "no"]),                                  	   #Separate
-	"<PalRes>":  set(["constantes", "variables", "real", "alfanumerico",
-		   		"logico", "entero", "funcion", "inicio", "fin", "de", 
-				"procedimiento", "regresa", "si", "hacer", "sino", "cuando",
-				"el", "valor", "sea", "otro", "desde", "hasta", "incr",
-				"decr", "repetir", "que", "mientras", "se", "cumpla",
-				"continua", "interrumpe", "limpia","lee", "imprime",
-				"imprimeln", "verdadero", "falso"]),                           #Separate
-	"<OpAsig>":  set([":="]),                                                  #Together
-	"<Ident>":   set(),
-	"<CteEnt>":  set(),
-	"<CteReal>": set(),
-	"<CteAlfa>": set(),
-	"<CteLog>":  set(),  
-	}
-
-keysList = list(tokens.keys())
 
 lexemas  = []
 separate = []
@@ -94,7 +19,7 @@ separate = []
 # *************** MAIN ***************
 
 # Gets input and output file's names
-file = sys.argv[1]
+file = "Tests_0" #sys.argv[1]
 fileOutput = sys.argv[2] if len(sys.argv) == 3 else "output.lex"
 
 # File to read
@@ -173,7 +98,13 @@ with open(file, "r") as f:
 			skipNext-=1
 
 # New file to write the content without spaces
-with open(fileOutput, "w+") as nf:
-    header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
-    nf.write(header)
-    [nf.write("\n\t" + l[0] + "\t\t\t\t" + l[1]) for l in lexemas]
+# with open(fileOutput, "w+") as nf:
+#     header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
+#     nf.write(header)
+#     [nf.write("\n\t" + l[0] + "\t\t\t\t" + l[1]) for l in lexemas]
+    
+# Review Grammar
+if checkGrammar(lexemas) == 1:
+	print("\nCompile with success!\n")
+else:
+	print("\nThere's an error in your code :'(\n")
