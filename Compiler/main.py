@@ -1,12 +1,12 @@
-# Author: Rosita Aguirre Plascencia
+# Author: Rosita Aguirre Plascencia & Damina López Virgen
 # Subject: Compilers
-# Id: 0225352 
+# Id: 0225352 & 0225228
 
-# Lexeme Classifier
+# Compiler Project
 
-# Run:     python .\lexeme_classifier.py <file name> <output file name>
-# Example: python .\lexeme_classifier.py .\Tests_0 .\Tests_0_out.txt
-# Example: python .\lexeme_classifier.py .\ArchivoPrueba.up .\ArchivoPrueba.lex
+# Run:     python .\main.py <file name> <output file name>
+# Example: python .\main.py .\Tests_0 .\Tests_0_out.txt
+# Example: python .\main.py .\ArchivoPrueba.up .\ArchivoPrueba.lex
 
 import sys
 
