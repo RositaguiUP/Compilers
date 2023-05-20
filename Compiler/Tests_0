@@ -1,0 +1,30 @@
+//Archivo de prueba
+
+constantes 	PI:=3.141593;
+		MAX:=30;
+variables	i,j,k,n, vector[MAX], matriz[MAX][MAX]:entero;
+		r,h,s:real;
+		alfa,beta:alfanumerico;
+		log1,log2:logico;
+funcion fibo(n:entero):entero;
+funcion facRec(n:entero):entero;
+funcion facIter(n:entero):entero;
+procedimiento selecciona()
+inicio
+	imprime("1) Factorial recursivo
+		2) Factorial iterativo
+		3) Fibonacci");
+	lee(k);
+	cuando el valor de k
+	inicio
+		sea 1:
+			imprimeln("Factorial recursivo de ",m," es ", facRec(m));
+		sea 2:
+			imprimeln("Factorial iterativo de ",m," es ", facIter(m));
+		sea 3:
+			imprimeln("Secuencia de Fibonacci hasta ",m," es ", fibo(m));
+		otro:	
+			imprimeln("Opción inválida");
+	fin
+
+fin de procedimiento;
