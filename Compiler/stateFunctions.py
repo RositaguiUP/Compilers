@@ -46,16 +46,25 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
             return 0
         else:
             return -1
-    elif isinstance(gramToComp, tuple):   
+    elif isinstance(gramToComp, tuple):
+        empt = False                             # Could be empty
+        if gramToComp[1] == "e":
+            empt = True
+
         if (gramToComp[0] == "cg"):              # If is a compuned grammar
             for k in range(2, len(gramToComp)):
                 lex = lexemas[i]
                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp[k])
                 if res == -1:
-                    return -1
+                    if empt == False:
+                        return -1
+                    else:
+                        return 0
                 elif res != 0:
-                    i += 1
+                    i = res + 1
+            i -= 1
             return i
+        
         elif (gramToComp[0] == "g"):            # If is a grammar
             actualState = State(gramToComp[2], parentState.parentId, parentState.index+1)
             parentState.substates.append(actualState)
@@ -65,22 +74,39 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
                 gramToCompAux = grams[actualState.gram][actualState.index]
                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToCompAux)
                 if res == -1:
-                    return -1
+                    if empt == False:
+                        return -1
+                    else:
+                        return 0
                 else:
                     gramLen = len(grams[actualState.gram])
                     actualState.addIndex()
                     if res != 0:
-                        i += 1
-                    if actualState.index == gramLen:
-                        actualState.index -= 1
-                        i -= 1
-                        return i
+                        i = res + 1
+                if actualState.index == gramLen:
+                    actualState.index -= 1
+                    i -= 1
+                    return i
 
-        else:                                    # If is a token
+        elif (gramToComp[0] == "t"):           # If is a token
             if lex[1] == gramToComp[2]:
                 return i
-            else:
+            elif (empt == False):
                 return -1
+            else:
+                return 0
+            
+        elif (gramToComp[0] == "|"):
+            for m in range(2, len(gramToComp)):
+                lex = lexemas[i]
+                res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp[m])
+                if res > 0:
+                    return i # or i+1??
+            if (empt == False):
+                return -1
+            else:
+                return 0
+            
     elif isinstance(gramToComp, list):
         for l in range(len(gramToComp)):
             lex = lexemas[i]
@@ -88,7 +114,8 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
             if  res == -1:
                 return -1
             elif res != 0:
-                i += 1
+                i = res + 1
+        i -= 1
         return i
 
 # empty just with string done!
