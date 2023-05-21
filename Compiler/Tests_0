@@ -1,1 +1,1 @@
-si (2 >= 3) hacer
+si (verdadero = 3.5) hacer limpiar

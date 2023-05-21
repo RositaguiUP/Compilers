@@ -98,10 +98,10 @@ with open(file, "r") as f:
 			skipNext-=1
 
 #New file to write the content without spaces
-# with open(fileOutput, "w+") as nf:
-#     header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
-#     nf.write(header)
-#     [nf.write("\n\t" + l[0] + "\t\t\t\t" + l[1]) for l in lexemas]
+with open(fileOutput, "w+") as nf:
+    header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
+    nf.write(header)
+    [nf.write("\n\t" + l[0] + "\t\t\t\t" + l[1]) for l in lexemas]
     
 # Review Grammar
 if checkGrammar(lexemas) == 1:

@@ -34,7 +34,6 @@ def checkGrammar(lexemas):
 
 def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
     if isinstance(gramToComp, str):     # If is a string
-        # Poner condición para que si está entre [] el gramToComp, pueda ser empty
         empt = False
         if gramToComp.startswith('['):
             empt = True
@@ -53,6 +52,8 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
 
         if (gramToComp[0] == "cg"):              # If is a compuned grammar
             for k in range(2, len(gramToComp)):
+                if i >= len(lexemas):
+                    return -1
                 lex = lexemas[i]
                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp[k])
                 if res == -1:
@@ -70,6 +71,8 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
             parentState.substates.append(actualState)
             parentState.substateStart = True
             while(True):
+                if i >= len(lexemas):
+                    return -1
                 lex = lexemas[i]
                 gramToCompAux = grams[actualState.gram][actualState.index]
                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToCompAux)
@@ -98,10 +101,12 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
             
         elif (gramToComp[0] == "|"):
             for m in range(2, len(gramToComp)):
+                if i >= len(lexemas):
+                    return -1
                 lex = lexemas[i]
                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp[m])
                 if res > 0:
-                    return i # or i+1??
+                    return i
             if (empt == False):
                 return -1
             else:
@@ -109,6 +114,8 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
             
     elif isinstance(gramToComp, list):
         for l in range(len(gramToComp)):
+            if i >= len(lexemas):
+                return -1
             lex = lexemas[i]
             res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp[l])
             if  res == -1:
@@ -117,5 +124,3 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
                 i = res + 1
         i -= 1
         return i
-
-# empty just with string done!

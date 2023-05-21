@@ -12,13 +12,13 @@ tokens = {
 				"el", "valor", "sea", "otro", "desde", "hasta", "incr",
 				"decr", "repetir", "que", "mientras", "se", "cumpla",
 				"continua", "interrumpe", "limpia","lee", "imprime",
-				"imprimeln", "verdadero", "falso"]),                           #4
+				"imprimeln"]),                           #4
 	"<OpAsig>":  set([":="]),    #5
 	"<Ident>":   set(),          #6
 	"<CteEnt>":  set(),          #7
 	"<CteReal>": set(),          #8
 	"<CteAlfa>": set(),          #9
-	"<CteLog>":  set(),          #10
+	"<CteLog>":  set(["verdadero", "falso"]),      	    #10
 	}
 
 keysList = list(tokens.keys())
@@ -49,23 +49,6 @@ keysList = list(tokens.keys())
 # FuncProc 		= ["<procedimiento>", "|", "<funcion>", "[", "<FuncProc>", "]"],
 # procedimiento 	= ["procedimiento", "Id", "(", "<Params>", ")", "[", "<variables>", "]", "inicio", "<Block>", "fin", "de", "procedimiento", ";"],
 # funcion 		= ["funcion", "Id", "(", "<Params>", ")", ":", "<tipo>", "[", "<variables>", "]", "inicio", "<Block>", "fin", "de", "funcion", ";"],
-# Block 			= ["[", "<estatuto>", "]", ";", "[", "<Block>", "]"],
-# estatuto 		= ["<si>", "|", "limpiar", "|", "<desde>", "|", "<repetir>", "|", "<mientras>", "|", "<cuando>", "|", "<regresa>", "|", "<asigna>", "|", "<lproc>", "|", "<imprime>", "|", "<imprimenl>", "|", "<leer>", "|", "interrumpe", "|", "continua"],
-
-
-
-
-
-
-# Exprlog 		= [Opy]
-# ExprlogAux 		= ("cg", "e", "o", Exprlog)
-# Exprlog.append(ExprlogAux)
-
-
-
-
-
-# BckEsp 			= ["[", "<estatuto>", "]", "|", "inicio", "[", "<Block>", "]", "fin"],
 # desde 			= ["desde", "el", "valor", "de", "<asigna>", "hasta", "<exp>", "[", "inc", "|", "decr", "CteEnt", "]", "[", "<BckEsp>", "]"],
 # repetir 		= ["repetir", "[", "<Block>", "]", "hasta", "que", "(", "<Exprlog>", ")"],
 # mientras 		= ["mientras", "se", "cumpla", "que", "(", "<Exprlog>", ")", "[", "<BckEsp>", "]"],
@@ -76,10 +59,6 @@ keysList = list(tokens.keys())
 # Udim 			= ["[", "<Expr>", "]", "[", "<Udim>", "]"],
 # regresa 		= ["regresa", "(", "<Exprlog>", ")"],
 # Expr 			= ["<Multi>", "[", "+", "|", "-", "<Expr>", "]"],
-# Multi 			= ["<Expo>", "[", "*", "|", "/", "|", "%", "<Multi>", "]"],
-# Expo 			= ["<signo>", "[", "^", "<Expo>", "]"],
-# signo 			= ["[-]", "<termino>"],
-# termino 		= ["Id", "[", "lfunc", "|", "<Udim>", "]", "|", "(", "<Exprlog>", ")", "|", "CteEnt", "|", "CteReal", "|", "CteAlfa", "|", "verdadero", "|", "falso"],
 # lproc 			= ["Id", "(", "<Uparams>", ")"],
 # lfunc 			= ["Id", "(", "<Uparams>", ")"],
 # imprime 		= ["imprime", "(", "<GpoExp>", ")"],
@@ -89,25 +68,44 @@ keysList = list(tokens.keys())
 # impi 			= ["limpia"],
 # leer 			= ["lee", "(", "Id", "[", "<Udim>", "]", ")"]
 
-# Exprlog  = [("t", "ne", keysList[7]), ("t", "ne", keysList[2]), ("t", "ne", keysList[7])]
-# si       = ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer"]
 
-Expr 			= [("t", "ne", keysList[7])] #["<Multi>", "[", "+", "|", "-", "<Expr>", "]"]
+
+
+
+
+estatuto 		= [("|", "ne", ("g", "ne", "si"), "limpiar")] #,  ("g", "ne", "desde"), ("g", "ne", "repetir"),
+	       			# ("g", "ne", "mientras"), ("g", "ne", "cuando"), ("g", "ne", "regresa"), ("g", "ne", "asigna"),
+					# ("g", "ne", "lproc"), ("g", "ne", "imprime"), ("g", "ne", "imprimenl"), ("g", "ne", "leer"),
+					# "interrumpe", "continua")],
+Block 			= [("cg", "ne", ("g", "e", "estatuto"), ";",("g", "e", "Block"))]
+BckEsp 			= [("|", "ne", ("g", "e", "estatuto"), ("cg", "ne", "inicio", ("g", "e", "Block"), "fin"))]
+termino 		= [("|", "ne", ("cg", "ne", "(", ("g", "ne", "Exprlog"), ")"), ("t", "ne", keysList[7]), 
+	      			("t", "ne", keysList[8]),("t", "ne", keysList[9]), ("t", "ne", keysList[10]))]										# Pending Id[lfunc|<Udim>] 
+signo 			= ["[-", ("g", "ne", "termino")]
+Expo 			= [("g", "ne", "signo"), ("cg", "e", "^", ("g", "ne", "Expo"))]
+Multi 			= [("g", "ne", "Expo"), ("cg", "e", ("|", "ne", "*", "/", "%"), ("g", "ne", "Multi"))]
+Expr 			= [("g", "ne", "Multi"), ("cg", "e", ("|", "ne", "+", "-"), ("g", "ne", "Expr"))]
 Oprel 			= [("g", "ne", "Expr"), ("cg", "e", ("t", "ne", keysList[2]), ("g", "ne", "Opy"))]
 Opno 			= [("cg", "ne", "[no", ("g", "ne", "Oprel"))],
 Opy 			= [("g", "ne", "Opno"), ("cg", "e", "y", ("g", "ne", "Opy"))]
 Exprlog 		= [("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog"))]
-si 				= ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer"] #, "[", "<BckEsp>", "]", "[", "sino", "[", "<BckEsp>", "]", "]"],
-
-
+si 				= ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer", ("g", "e", "BckEsp"),
+	  				("cg", "e", "sino", ("g", "e", "BckEsp"))]
 
 grams = {
-	"Expr": 	Expr,
-	"Oprel": 	Oprel,
-	"Opno": 	Opno,
-	"Opy":		Opy,
-	"Exprlog":  Exprlog,
-	"si":       si
+	"estatuto": 	estatuto,
+	"Block": 		Block,
+	"BckEsp": 		BckEsp,
+	"termino": 		termino,
+	"signo": 		signo,
+	"Expo": 		Expo,
+	"Multi": 		Multi,
+	"Expr": 		Expr,
+	"Oprel": 		Oprel,
+	"Opno": 		Opno,
+	"Opy":			Opy,
+	"Exprlog":  	Exprlog,
+	"si":       	si
 }
 
 gramsKeysList = list(grams.keys())
