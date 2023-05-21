@@ -1,5 +1,5 @@
 
-# *************** VARIABLES ***************
+# *************** Tokens ***************
 
 tokens = {
 	"<Delim>":   set([".", ",", ";", "(", ")", "[", "]", ":", "\n", "\t"]),    #0 
@@ -23,36 +23,92 @@ tokens = {
 
 keysList = list(tokens.keys())
 
+# *************** Aux Grammar Rules ***************
+
+# t  -> token
+# g  -> grammar
+# cg -> compound grammar
+# |  -> or
+
+# e  -> could be empty
+# ne -> could'nt be empty
+
+# *************** Grammar Rules ***************
+
+# Prgrm 			= ["[", ("<constantes>", "]", "[", "<variables>", "]", "[", "<ProtFuncProc>", "]", "<FuncProc>", "programa", "<Block>", "fin", "de", "programa")],
+# variables 		= ["variables", "<GpoVars>"],
+# GpoVars 		= ["<GpoIds>", ":", "<tipo>", ";", "[", "<GpoVars>", "]"],
+# GpoIds 			= ["Id", "[", "<Dimens>", "]", "[", ":=", "CteEnt", "|", "Id", "]", ",", "<GpoIds>"],
+# Dimens 			= ["[", "CteEnt", "|", "Id", "]", "<Dimens>"],
+# tipo 			= ["entero", "|", "real", "|", "alfabetico", "|", "logico"],
+# ProtFuncProc 	= ["<ProtFunc>", "|", "<ProtProc>", "[", "<ProtFuncProc>", "]"],
+# ProtFunc 		= ["funcion", "Id", "(", "<Params>", ")", ":", "<tipo>", ";"],
+# ProtProc 		= ["procedimiento", "Id", "(", "<Params>", ")", ";"],
+# Params 			= ["<GpoPars>", ":", "<tipo>", ";", "<Params>"],
+# GpoPars 		= ["Id", ",", "<GpoPars>"],
+# FuncProc 		= ["<procedimiento>", "|", "<funcion>", "[", "<FuncProc>", "]"],
+# procedimiento 	= ["procedimiento", "Id", "(", "<Params>", ")", "[", "<variables>", "]", "inicio", "<Block>", "fin", "de", "procedimiento", ";"],
+# funcion 		= ["funcion", "Id", "(", "<Params>", ")", ":", "<tipo>", "[", "<variables>", "]", "inicio", "<Block>", "fin", "de", "funcion", ";"],
+# Block 			= ["[", "<estatuto>", "]", ";", "[", "<Block>", "]"],
+# estatuto 		= ["<si>", "|", "limpiar", "|", "<desde>", "|", "<repetir>", "|", "<mientras>", "|", "<cuando>", "|", "<regresa>", "|", "<asigna>", "|", "<lproc>", "|", "<imprime>", "|", "<imprimenl>", "|", "<leer>", "|", "interrumpe", "|", "continua"],
 
 
 
-# gramsList = []
-# gramsList.append(Exprlog)
-# gramsList.append(estatuto)
-# gramsList.append(si)
 
 
-# Exprlog  = [keysList[7], keysList[2], keysList[7]]
-# estatuto = ["x"]
-# si       = ["si", "(", Exprlog, ")", "hacer", estatuto]
 
-# grams = {
-# 	"Exprlog":  Exprlog,
-# 	"estatuto": estatuto,
-# 	"si":       si
-# }
+# Exprlog 		= [Opy]
+# ExprlogAux 		= ("cg", "e", "o", Exprlog)
+# Exprlog.append(ExprlogAux)
 
 
-Exprlog  = [("t", keysList[7]), ("t", keysList[2]), ("t", keysList[7])]
-estatuto = ["x"]
-si       = ["si", "(", ("g", "Exprlog"), ")", "hacer"]
+
+
+
+# BckEsp 			= ["[", "<estatuto>", "]", "|", "inicio", "[", "<Block>", "]", "fin"],
+# desde 			= ["desde", "el", "valor", "de", "<asigna>", "hasta", "<exp>", "[", "inc", "|", "decr", "CteEnt", "]", "[", "<BckEsp>", "]"],
+# repetir 		= ["repetir", "[", "<Block>", "]", "hasta", "que", "(", "<Exprlog>", ")"],
+# mientras 		= ["mientras", "se", "cumpla", "que", "(", "<Exprlog>", ")", "[", "<BckEsp>", "]"],
+# asigna 			= ["Id", "[", "<Udim>", "]", ":=", "<Exprlog>"],
+# cuando 			= ["cuando", "el", "valor", "del", "Id", "inicio", "<GpoSea>", "[", "otro", ":", "[", "<BckEsp>", "]", "]", "fin"],
+# GpoSea 			= ["sea", "<GpoConst>", ":", "[", "<BckEsp>", "]", "[", "<GpoSea>", "]"],
+# GpoConst 		= ["<cte>", ",", "<GpoConst>"],
+# Udim 			= ["[", "<Expr>", "]", "[", "<Udim>", "]"],
+# regresa 		= ["regresa", "(", "<Exprlog>", ")"],
+# Expr 			= ["<Multi>", "[", "+", "|", "-", "<Expr>", "]"],
+# Multi 			= ["<Expo>", "[", "*", "|", "/", "|", "%", "<Multi>", "]"],
+# Expo 			= ["<signo>", "[", "^", "<Expo>", "]"],
+# signo 			= ["[-]", "<termino>"],
+# termino 		= ["Id", "[", "lfunc", "|", "<Udim>", "]", "|", "(", "<Exprlog>", ")", "|", "CteEnt", "|", "CteReal", "|", "CteAlfa", "|", "verdadero", "|", "falso"],
+# lproc 			= ["Id", "(", "<Uparams>", ")"],
+# lfunc 			= ["Id", "(", "<Uparams>", ")"],
+# imprime 		= ["imprime", "(", "<GpoExp>", ")"],
+# imprimenl 		= ["imprimenl", "(", "<GpoExp>", ")"],
+# GpoExp 			= ["<Exprlog>", "[", ",", "<GpoExp>", "]"],
+# Uparams 		= ["<Explog>", "[", ",", "<Uparams>", "]"],
+# impi 			= ["limpia"],
+# leer 			= ["lee", "(", "Id", "[", "<Udim>", "]", ")"]
+
+# Exprlog  = [("t", "ne", keysList[7]), ("t", "ne", keysList[2]), ("t", "ne", keysList[7])]
+# si       = ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer"]
+
+Expr 			= [("t", "ne", keysList[7])] #["<Multi>", "[", "+", "|", "-", "<Expr>", "]"]
+Oprel 			= [("g", "ne", "Expr"), ("cg", "e", ("|", "ne", (("t", "e", keysList[2]), ("g", "e", "Opy"))))],
+Opno 			= [("cg", "ne", "[no", ("g", "ne", "Oprel"))],
+Opy 			= [("g", "ne", "Opno"), ("cg", "e", "y", ("g", "ne", "Opy"))]
+Exprlog 		= [("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog"))]
+si 				= ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer"] #, "[", "<BckEsp>", "]", "[", "sino", "[", "<BckEsp>", "]", "]"],
+
+
 
 grams = {
+	"Expr": 	Expr,
+	"Oprel": 	Oprel,
+	"Opno": 	Opno,
+	"Opy":		Opy,
 	"Exprlog":  Exprlog,
-	"estatuto": estatuto,
 	"si":       si
 }
-
 
 gramsKeysList = list(grams.keys())
 

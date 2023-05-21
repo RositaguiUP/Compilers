@@ -97,7 +97,7 @@ with open(file, "r") as f:
 		else:
 			skipNext-=1
 
-# New file to write the content without spaces
+#New file to write the content without spaces
 # with open(fileOutput, "w+") as nf:
 #     header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
 #     nf.write(header)
