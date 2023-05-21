@@ -1,5 +1,11 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
-	variables				<PalRes>
-	sia				<Ident>
+	si				<PalRes>
+	(				<Delim>
+	verdadero				<CteLog>
+	=				<OpRel>
+	w				<Ident>
+	)				<Delim>
+	hacer				<PalRes>
+	limpiar				<Ident>

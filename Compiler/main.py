@@ -1,4 +1,4 @@
-# Author: Rosita Aguirre Plascencia & Damina López Virgen
+# Author: Rosita Aguirre Plascencia & Damian López Virgen
 # Subject: Compilers
 # Id: 0225352 & 0225228
 
@@ -94,6 +94,9 @@ with open(file, "r") as f:
 								tokens["<Ident>"].add(e)            					# Add identifier to the set
 								if not (identifier in {"variables", "constantes"}):
 									identifier = ""
+							else:
+								lexemas.append([e, keysList[6]])
+								tokens["<Ident>"].add(e)
 		else:
 			skipNext-=1
 
