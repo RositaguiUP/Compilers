@@ -93,7 +93,7 @@ keysList = list(tokens.keys())
 # si       = ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer"]
 
 Expr 			= [("t", "ne", keysList[7])] #["<Multi>", "[", "+", "|", "-", "<Expr>", "]"]
-Oprel 			= [("g", "ne", "Expr"), ("cg", "e", ("|", "ne", (("t", "e", keysList[2]), ("g", "e", "Opy"))))],
+Oprel 			= [("g", "ne", "Expr"), ("cg", "e", ("t", "ne", keysList[2]), ("g", "ne", "Opy"))]
 Opno 			= [("cg", "ne", "[no", ("g", "ne", "Oprel"))],
 Opy 			= [("g", "ne", "Opno"), ("cg", "e", "y", ("g", "ne", "Opy"))]
 Exprlog 		= [("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog"))]
