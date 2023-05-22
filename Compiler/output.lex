@@ -1,11 +1,16 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
+	programa				<PalRes>
 	si				<PalRes>
 	(				<Delim>
-	verdadero				<CteLog>
+	1				<CteEnt>
 	=				<OpRel>
-	a				<Ident>
+	2				<CteEnt>
 	)				<Delim>
 	hacer				<PalRes>
 	limpia				<PalRes>
+	;				<Delim>
+	fin				<PalRes>
+	de				<PalRes>
+	programa				<PalRes>
