@@ -6,28 +6,37 @@ def checkGrammar(lexemas):
     openState = False
     id = 0
     actualState = None
-    i = 0
-    while i < len(lexemas):
-        lex = lexemas[i]
-        if openState == False:
-            for gramKey in gramsKeysList:
-                actualState = State(gramKey, 0, id)
-                while actualState.index < len(grams[actualState.gram]):
-                    gramToComp = grams[actualState.gram][actualState.index]
-                    res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp)
-                    actualState.addIndex()
-                    if res == -1:
-                        break
-                    elif res >= 0:
-                        openState = True
-                        i = res + 1
-                        break
-                if openState == True:
-                    break
-            if openState == False:
-                return -1
-        openState = False
-    return 1
+
+    lex = lexemas[0]
+    actualState = State("Prgrm", 0, id)
+    gramToComp = grams[actualState.gram][actualState.index]
+    res = checkLex(lex, 0, actualState, actualState, lexemas, gramToComp)
+    if res >= 0:
+        return 1
+    return -1
+
+    # i = 0
+    # while i < len(lexemas):
+    #     lex = lexemas[i]
+    #     if openState == False:
+    #         for gramKey in gramsKeysList:
+    #             actualState = State(gramKey, 0, id)
+    #             while actualState.index < len(grams[actualState.gram]):
+    #                 gramToComp = grams[actualState.gram][actualState.index]
+    #                 res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp)
+    #                 actualState.addIndex()
+    #                 if res == -1:
+    #                     break
+    #                 elif res >= 0:
+    #                     openState = True
+    #                     i = res + 1
+    #                     break
+    #             if openState == True:
+    #                 break
+    #         if openState == False:
+    #             return -1
+    #     openState = False
+    # return 1
 
 def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
     if isinstance(gramToComp, str):     # If is a string

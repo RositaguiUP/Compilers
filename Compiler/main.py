@@ -19,7 +19,7 @@ separate = []
 # *************** MAIN ***************
 
 # Gets input and output file's names
-file = "Tests_0" #sys.argv[1]
+file = "practica.up" #Tests_0" #sys.argv[1]
 fileOutput = sys.argv[2] if len(sys.argv) == 3 else "output.lex"
 
 # File to read
@@ -112,8 +112,6 @@ if checkGrammar(lexemas) == 1:
 else:
 	print("\nThere's an error in your code :'(\n")
 
-
-# Bug in: si (1 = 2) hacer limpias;
 
 # programa
 # 	si (1 = 2) hacer limpias;

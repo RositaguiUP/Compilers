@@ -34,7 +34,7 @@ keysList = list(tokens.keys())
 
 # *************** Grammar Rules ***************
 Prgrm 			= [("cg", "ne", ("g", "e", "constantes"), ("g", "e", "variables"), ("g", "e", "ProtFuncProc"), ("g", "e", "FuncProc"),							# Revisar constantes
-	     			"programa", ("g", "e", "Block"), "fin", "de", "programa")]
+	     			"programa", ("g", "e", "Block"), "fin", "de", "programa", ".")]
 # Vars
 constantes 		= [("cg", "ne", "constantes", ("g", "ne", "GpoConst"))]
 variables 		= [("cg", "ne", "variables", ("g", "ne", "GpoVars"))]
