@@ -1,1 +1,3 @@
-si (verdadero = 3.5) hacer limpiar
+programa
+	variables a: entero;
+fin de programa
