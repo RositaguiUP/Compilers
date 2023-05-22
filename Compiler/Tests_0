@@ -1,1 +1,3 @@
-si (verdadero = a) hacer limpia
+programa
+si (verdadero = 3.5) hacer limpia;
+fin de programa
