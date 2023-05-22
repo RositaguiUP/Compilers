@@ -20,6 +20,7 @@ def checkGrammar(lexemas):
                     openState = True
                     id += 1
                     break
+            return -1
         else:
             parentState.addIndex()
             gramToComp = grams[actualState.gram][actualState.index]
@@ -27,8 +28,8 @@ def checkGrammar(lexemas):
             if res == -1:
                 parentState.index -= 1
                 return -1
-            else:
-                i = res
+            i = res
+            openState = False
         i += 1
     return 1
 
