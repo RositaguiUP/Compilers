@@ -111,3 +111,10 @@ if checkGrammar(lexemas) == 1:
 	print("\nCompile with success!\n")
 else:
 	print("\nThere's an error in your code :'(\n")
+
+
+# Bug in: si (1 = 2) hacer limpias;
+
+# programa
+# 	si (1 = 2) hacer limpias;
+# fin de programa

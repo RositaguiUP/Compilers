@@ -29,43 +29,6 @@ def checkGrammar(lexemas):
             if openState == False:
                 return -1
         openState = True
-        # else:
-        #     for a in range(actualState.index, len(grams[actualState.gram])):
-        #         lex = lexemas[i]
-        #         gramToComp = grams[actualState.gram][actualState.index]
-        #         res = checkLex(lex, i, actualState, actualState, lexemas, gramToComp)
-        #         if res == -1:
-        #             actualState.index -= 1
-        #             return -1
-        #         if res != -2:
-        #             i = res
-        #             i += 1
-        #         actualState.addIndex()
-        #     openState = False
-        #i += 1
-        # if openState == False:
-        #     for gramKey in gramsKeysList:
-        #         gramToComp = grams[gramKey][0]
-        #         if lex[0] == gramToComp:
-        #             parentState = State(gramKey, 0, id)
-        #             actualState = parentState
-        #             states.append(parentState)
-        #             openState = True
-        #             id += 1
-        #             break
-        #     if openState == False:
-        #         return -1
-        # else:
-        #     parentState.addIndex()
-        #     gramToComp = grams[actualState.gram][actualState.index]
-        #     res = checkLex(lex, i, parentState, parentState, lexemas, gramToComp)
-        #     if res == -1:
-        #         parentState.index -= 1
-        #         return -1
-        #     i = res
-        #     if parentState.index == len(grams[parentState.gram]):
-        #         openState = False
-        # i += 1
     return 1
 
 def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
@@ -150,20 +113,6 @@ def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
                 return -1
             else:
                 return -2
-            
-    elif isinstance(gramToComp, list):
-        for l in range(len(gramToComp)):
-            gramToCompAux = gramToComp[l]
-            if i >= len(lexemas):
-                return checkEmpty(i, gramToCompAux)
-            lex = lexemas[i]
-            res = checkLex(lex, i, actualState, actualState, lexemas, gramToCompAux)
-            if  res == -1:
-                return -1
-            elif res != -2:
-                i = res + 1
-        i -= 1
-        return i
     
 def checkEmpty(i, gramToComp):
     empt = False
@@ -177,5 +126,3 @@ def checkEmpty(i, gramToComp):
         return i
     else:
         return -1
-
-# 142, emtpy y list
