@@ -1,11 +1,6 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
-	si				<PalRes>
-	(				<Delim>
-	verdadero				<CteLog>
-	=				<OpRel>
+	variadbles				<Ident>
 	w				<Ident>
-	)				<Delim>
-	hacer				<PalRes>
-	limpia				<PalRes>
+	;				<Delim>

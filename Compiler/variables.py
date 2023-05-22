@@ -66,12 +66,12 @@ desde 			= ["desde", "el", "valor", "de", ("g", "ne", "asigna"), "hasta", ("g", 
              		("cg", "e", ("|", "ne", "inc", "decr"), ("c", "ne", ("t", "ne", keysList[7]))), ("g", "e", "BckEsp")]
 repetir 		= ["repetir", ("g", "e", "Block"), "hasta", "que", "(", ("g", "ne", "Exprlog"), ")"]
 mientras 		= ["mientras", "se", "cumpla", "que", "(", ("g", "ne", "Exprlog"), ")", ("g", "e", "BckEsp")]
-asigna 			= [("t", "ne", keysList[6]), ("g", "e", "Udim"), ":=", ("g", "ne", "Exprlog")]
+asigna 			= [("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne", "Udim"), "]"), ":=", ("g", "ne", "Exprlog")]
 cuando 			= ["cuando", "el", "valor", "del", ("t", "ne", keysList[6]), "inicio", ("g", "ne", "GpoSea"), 
 	     			"otro", ":", ("g", "e", "BckEsp"), "fin"]
 GpoSea 			= ["sea", ("g", "ne", "GpoConst"), ":", ("g", "e", "BckEsp"), ("g", "e", "GpoSea")]
 GpoConst 		= [("g", "ne", "cte"), ("g", "e", "GpoConst")]
-Udim 			= [("g", "e", "Expr"), ("g", "e", "Udim")]
+Udim 			= [("g", "e", "Expr"), ("cg", "e", "[", ("g", "ne", "Udim"), "]")]
 regresa 		= ["regresa", ("cg", "e", "(", ("g", "ne", "Exprlog"), ")")]
 Exprlog 		= [("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog"))]
 # Operators
@@ -82,7 +82,7 @@ Expr 			= [("g", "ne", "Multi"), ("cg", "e", ("|", "ne", "+", "-"), ("g", "ne", 
 Multi 			= [("g", "ne", "Expo"), ("cg", "e", ("|", "ne", "*", "/", "%"), ("g", "ne", "Multi"))]
 Expo 			= [("g", "ne", "signo"), ("cg", "e", "^", ("g", "ne", "Expo"))]
 signo 			= ["[-", ("g", "ne", "termino")]
-termino 		= [("|", "ne", ("cg", "ne", ("t", "ne", keysList[6]), ("|", "ne", ("g", "e", "lfunc"), ("g", "e", "Udim"))),
+termino 		= [("|", "ne",  ("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("|", "ne", ("g", "ne", "lfunc"), ("g", "ne", "Udim") ,"]"))),
 	      			("cg", "ne", "(", ("g", "ne", "Exprlog"), ")"), ("t", "ne", keysList[7]), 
 					("t", "ne", keysList[8]),("t", "ne", keysList[9]), ("t", "ne", keysList[10]))] 
 lproc 			= [("t", "ne", keysList[6]), "(", ("g", "e", "Uparams"), ")"]
@@ -91,7 +91,7 @@ imprime 		= ["imprime", "(", ("g", "e", "GpoExp"), ")"]
 imprimenl 		= ["imprimenl", "(", ("g", "e", "GpoExp"), ")"]
 GpoExp 			= [("g", "ne", "Exprlog"), ("cg", "e",  ",", ("g", "e", "GpoExp"))]
 Uparams 			= [("g", "ne", "Exprlog"), ("cg", "e",  ",", ("g", "e", "Uparams"))]
-leer 			= ["lee", "(", ("t", "ne", keysList[6]), ("g", "e", "Udim"), ")"]
+leer 			= ["lee", "(", ("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne", "Udim"), "]"), ")"]
 
 
 
