@@ -5,8 +5,6 @@ from variables import *
 def checkGrammar(lexemas):
     openState = False
     id = 0
-    states = []
-    parentState = None
     actualState = None
     i = 0
     while i < len(lexemas):
@@ -28,7 +26,7 @@ def checkGrammar(lexemas):
                     break
             if openState == False:
                 return -1
-        openState = True
+        openState = False
     return 1
 
 def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
