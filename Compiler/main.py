@@ -117,4 +117,10 @@ else:
 
 # programa
 # 	si (1 = 2) hacer limpias;
+#   a:=3;
+# fin de programa
+
+
+# programa
+# 	variables a: entero;
 # fin de programa
