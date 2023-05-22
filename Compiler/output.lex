@@ -9,4 +9,3 @@
 	)				<Delim>
 	hacer				<PalRes>
 	limpia				<PalRes>
-	;				<Delim>

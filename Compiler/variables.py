@@ -34,10 +34,10 @@ keysList = list(tokens.keys())
 
 # *************** Grammar Rules ***************
 Prgrm 			= [("g", "e", "constantes"), ("g", "e", "variables"), ("g", "e", "ProtFuncProc"), ("g", "e", "FuncProc"),							# Revisar constantes
-	     			"programa", ("g", "e", "Block"), "fin", "de", "programa"],
+	     			"programa", ("g", "e", "Block"), "fin", "de", "programa"]
 # Vars
-constantes 		= ["constantes", ("g", "ne", "GpoConst")],
-variables 		= ["variables", ("g", "ne", "GpoVars")],
+constantes 		= ["constantes", ("g", "ne", "GpoConst")]
+variables 		= ["variables", ("g", "ne", "GpoVars")]
 GpoVars 		= [("g", "ne", "GpoIds"), ":", ("g", "ne", "tipo"), ";", ("g", "e", "GpoVars")]
 GpoIds 			= [("t", "ne", keysList[6]), ("g", "e", "Dimens"), ("cg", "e", ":=", ("|", "ne", ("t", "ne", keysList[7]),
 					("t", "ne", keysList[6]))), ("cg", "e", ",", ("g", "e", "GpoIds"))]
@@ -48,7 +48,7 @@ ProtFuncProc 	= [("|", "ne", ("g", "ne", "ProtFunc"), ("cg", "ne", ("g", "ne", "
 ProtFunc 		= ["funcion", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "ne", "Params"), ")", ":", ("g", "ne", "tipo"), ";"]
 ProtProc 		= ["procedimiento", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "ne", "Params"), ")", ";"]
 Params 			= [("g", "ne", "GpoPars"), ":", ("g", "ne", "tipo"), ("cg", "e", ";", ("g", "ne", "Params"))]
-GpoPars 		= [("g", "ne", ("t", "ne", keysList[6])), ("cg", "e", ",", ("g", "ne", "GpoPars"))]
+GpoPars 		= [("t", "ne", keysList[6]), ("cg", "e", ",", ("g", "ne", "GpoPars"))]
 FuncProc 		= [("|", "ne", ("g", "ne", "procedimiento"), ("cg", "ne", ("g", "ne", "funcion"), ("g", "e", "FuncProc")))]
 procedimiento 	= ["procedimiento", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "procedimiento", ";"]
@@ -58,7 +58,7 @@ funcion 		= ["funcion",  ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", 
 Block 			= [("g", "e", "estatuto"), ";", ("g", "e", "Block")]
 estatuto 		= [("|", "ne", ("g", "ne", "si"), "limpia",  ("g", "ne", "desde"), ("g", "ne", "repetir"), ("g", "ne", "mientras"),
 	       			("g", "ne", "cuando"), ("g", "ne", "regresa"), ("g", "ne", "asigna"), ("g", "ne", "lproc"),
-					("g", "ne", "imprime"), ("g", "ne", "imprimenl"), ("g", "ne", "leer"), "interrumpe", "continua")],
+					("g", "ne", "imprime"), ("g", "ne", "imprimenl"), ("g", "ne", "leer"), "interrumpe", "continua")]
 si 				= ["si", "(", ("g", "ne", "Exprlog"), ")", "hacer", ("g", "e", "BckEsp"),
 	  				("cg", "e", "sino", ("g", "e", "BckEsp"))]
 BckEsp 			= [("|", "ne", ("g", "e", "estatuto"), ("cg", "ne", "inicio", ("g", "e", "Block"), "fin"))]
@@ -76,7 +76,7 @@ regresa 		= ["regresa", ("cg", "e", "(", ("g", "ne", "Exprlog"), ")")]
 Exprlog 		= [("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog"))]
 # Operators
 Opy 			= [("g", "ne", "Opno"), ("cg", "e", "y", ("g", "ne", "Opy"))]
-Opno 			= ["[no", ("g", "ne", "Oprel")],
+Opno 			= ["[no", ("g", "ne", "Oprel")]
 Oprel 			= [("g", "ne", "Expr"), ("cg", "e", ("t", "ne", keysList[2]), ("g", "ne", "Opy"))]
 Expr 			= [("g", "ne", "Multi"), ("cg", "e", ("|", "ne", "+", "-"), ("g", "ne", "Expr"))]
 Multi 			= [("g", "ne", "Expo"), ("cg", "e", ("|", "ne", "*", "/", "%"), ("g", "ne", "Multi"))]
