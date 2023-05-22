@@ -1,1 +1,6 @@
-si (1 = 2) hacer limpias;
+variables a: entero;
+
+programa
+	si (1 = 2) hacer limpia;
+	a:=3;
+fin de programa

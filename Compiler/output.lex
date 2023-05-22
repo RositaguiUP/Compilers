@@ -1,6 +1,12 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
+	variables				<PalRes>
+	a				<Ident>
+	:				<Delim>
+	entero				<PalRes>
+	;				<Delim>
+	programa				<PalRes>
 	si				<PalRes>
 	(				<Delim>
 	1				<CteEnt>
@@ -8,5 +14,12 @@
 	2				<CteEnt>
 	)				<Delim>
 	hacer				<PalRes>
-	limpias				<Ident>
+	limpia				<PalRes>
 	;				<Delim>
+	a				<Ident>
+	:=				<OpAsig>
+	3				<CteEnt>
+	;				<Delim>
+	fin				<PalRes>
+	de				<PalRes>
+	programa				<PalRes>
