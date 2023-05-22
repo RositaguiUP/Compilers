@@ -8,4 +8,4 @@
 	w				<Ident>
 	)				<Delim>
 	hacer				<PalRes>
-	limpiar				<Ident>
+	limpia				<PalRes>

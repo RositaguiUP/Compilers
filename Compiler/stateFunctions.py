@@ -35,7 +35,7 @@ def checkGrammar(lexemas):
 def checkLex(lex, i, actualState, parentState, lexemas, gramToComp):
     if isinstance(gramToComp, str):     # If is a string
         empt = False
-        if gramToComp.startswith('['):
+        if gramToComp.startswith('[') and len(gramToComp) > 1:
             empt = True
             gramToComp = gramToComp[1:]
 
