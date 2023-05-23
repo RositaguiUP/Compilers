@@ -70,7 +70,8 @@ asigna 			= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne",
 cuando 			= [("cg", "ne", "cuando", "el", "valor", "del", ("t", "ne", keysList[6]), "inicio", ("g", "ne", "GpoSea"), 
 	     			"otro", ":", ("g", "e", "BckEsp"), "fin")]
 GpoSea 			= [("cg", "ne", "sea", ("g", "ne", "GpoConst"), ":", ("g", "e", "BckEsp"), ("g", "e", "GpoSea"))]
-GpoConst 		= [("cg", "ne", ("g", "ne", "constantes"), ("g", "e", "GpoConst"))]
+GpoConst         = [("cg", "ne", ("t", "ne", keysList[6]), ":=", ("|", "ne", ("t", "ne", keysList[7]),
+                    ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10])), ";", ("g", "e", "GpoConst"))]
 Udim 			= [("cg", "ne", ("g", "e", "Expr"), ("cg", "e", "[", ("g", "ne", "Udim"), "]"))]
 regresa 		= [("cg", "ne", "regresa", ("cg", "e", "(", ("g", "ne", "Exprlog"), ")"))]
 Exprlog 		= [("cg", "ne", ("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog")))]
@@ -147,13 +148,9 @@ grams = {
 gramsKeysList = list(grams.keys())
 
 class State:
-	def __init__(self, gram, pid, id):
+	def __init__(self, gram):
 		self.gram = gram
-		self.parentId = pid
-		self.id = id
 		self.index = 0
-		self.substates = []
-		self.substateStart = False
 	
 	def addIndex(self):
 		self.index += 1
