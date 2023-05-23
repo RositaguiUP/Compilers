@@ -12,11 +12,10 @@
 	1				<CteEnt>
 	=				<OpRel>
 	2				<CteEnt>
-	)				<Delim>
 	hacer				<PalRes>
 	a				<Ident>
 	:=				<OpAsig>
-	;				<Delim>
+	3				<CteEnt>
 	fin				<PalRes>
 	de				<PalRes>
 	programa				<PalRes>

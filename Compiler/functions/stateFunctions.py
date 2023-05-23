@@ -97,8 +97,6 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                             return -2, errorMsg, parentEmpty, i
                     else:
                         if (i != 0 and not childEmpty):
-                            #errorMsg = res[1]
-                            #print(errorMsg)
                             parentErrorCode = -1
                             i = res[3]
                         else:
@@ -142,7 +140,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                     else:
                         if (i != 0 and not childEmpty):
                             errorMsg = res[1]
-                            print(errorMsg)
+                            print(errorMsg) #"Error: " + 
                             parentErrorCode = -1
                             i = res[3]
                         else:

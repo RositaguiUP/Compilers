@@ -1,6 +1,6 @@
 variables a: entero;
 
 programa
-	si (1 = 2) hacer
-	a:=3;
+	si (1 = 2 hacer
+	a:=3
 fin de programa.
