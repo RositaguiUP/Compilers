@@ -1,4 +1,4 @@
-from variables import *
+from functions.variables import *
 
 
 

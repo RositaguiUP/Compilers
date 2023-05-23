@@ -9,8 +9,8 @@
 # Example: python .\main.py .\ArchivoPrueba.up .\ArchivoPrueba.lex
 
 import sys
-from lexFunctions import *
-from stateFunctions import *
+from functions.lexFunctions import *
+from functions.stateFunctions import *
 
 
 lexemas  = []
@@ -19,8 +19,8 @@ separate = []
 # *************** MAIN ***************
 
 # Gets input and output file's names
-file = "practica.up" #Tests_0" #sys.argv[1]
-fileOutput = sys.argv[2] if len(sys.argv) == 3 else "output.lex"
+file = "Tests_0" #Tests_0" #sys.argv[1]
+fileOutput = sys.argv[2] if len(sys.argv) == 3 else "Tests_0.lex"
 
 # File to read
 with open(file, "r") as f:

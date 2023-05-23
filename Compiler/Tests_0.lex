@@ -1,166 +1,24 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
-	constantes				<PalRes>
-	PI				<Ident>
-	:=				<OpAsig>
-	3.141593				<CteReal>
-	;				<Delim>
-	MAX				<Ident>
-	:=				<OpAsig>
-	30				<CteEnt>
-	;				<Delim>
 	variables				<PalRes>
-	i				<Ident>
-	,				<Delim>
-	j				<Ident>
-	,				<Delim>
-	k				<Ident>
-	,				<Delim>
-	n				<Ident>
-	,				<Delim>
-	vector				<Ident>
-	[				<Delim>
-	MAX				<Ident>
-	]				<Delim>
-	,				<Delim>
-	matriz				<Ident>
-	[				<Delim>
-	MAX				<Ident>
-	]				<Delim>
-	[				<Delim>
-	MAX				<Ident>
-	]				<Delim>
+	a				<Ident>
 	:				<Delim>
 	entero				<PalRes>
 	;				<Delim>
-	r				<Ident>
-	,				<Delim>
-	h				<Ident>
-	,				<Delim>
-	s				<Ident>
-	:				<Delim>
-	real				<PalRes>
-	;				<Delim>
-	alfa				<Ident>
-	,				<Delim>
-	beta				<Ident>
-	:				<Delim>
-	alfanumerico				<PalRes>
-	;				<Delim>
-	log1				<Ident>
-	,				<Delim>
-	log2				<Ident>
-	:				<Delim>
-	logico				<PalRes>
-	;				<Delim>
-	funcion				<PalRes>
-	fibo				<Ident>
+	programa				<PalRes>
+	si				<PalRes>
 	(				<Delim>
-	n				<Ident>
-	:				<Delim>
-	entero				<PalRes>
-	)				<Delim>
-	:				<Delim>
-	entero				<PalRes>
-	;				<Delim>
-	funcion				<PalRes>
-	facRec				<Ident>
-	(				<Delim>
-	n				<Ident>
-	:				<Delim>
-	entero				<PalRes>
-	)				<Delim>
-	:				<Delim>
-	entero				<PalRes>
-	;				<Delim>
-	funcion				<PalRes>
-	facIter				<Ident>
-	(				<Delim>
-	n				<Ident>
-	:				<Delim>
-	entero				<PalRes>
-	)				<Delim>
-	:				<Delim>
-	entero				<PalRes>
-	;				<Delim>
-	procedimiento				<PalRes>
-	selecciona				<Ident>
-	(				<Delim>
-	)				<Delim>
-	inicio				<PalRes>
-	imprime				<PalRes>
-	(				<Delim>
-	"1) Factorial recursivo
-		2) Factorial iterativo
-		3) Fibonacci"				<CteAlfa>
-	)				<Delim>
-	;				<Delim>
-	lee				<PalRes>
-	(				<Delim>
-	k				<Ident>
-	)				<Delim>
-	;				<Delim>
-	cuando				<PalRes>
-	el				<PalRes>
-	valor				<PalRes>
-	de				<PalRes>
-	k				<Ident>
-	inicio				<PalRes>
-	sea				<PalRes>
 	1				<CteEnt>
-	:				<Delim>
-	imprimeln				<PalRes>
-	(				<Delim>
-	"Factorial recursivo de "				<CteAlfa>
-	,				<Delim>
-	,				<Delim>
-	" es "				<CteAlfa>
-	,				<Delim>
-	facRec				<Ident>
-	(				<Delim>
-	)				<Delim>
-	)				<Delim>
-	;				<Delim>
-	sea				<PalRes>
+	=				<OpRel>
 	2				<CteEnt>
-	:				<Delim>
-	imprimeln				<PalRes>
-	(				<Delim>
-	"Factorial iterativo de "				<CteAlfa>
-	,				<Delim>
-	,				<Delim>
-	" es "				<CteAlfa>
-	,				<Delim>
-	facIter				<Ident>
-	(				<Delim>
 	)				<Delim>
-	)				<Delim>
-	;				<Delim>
-	sea				<PalRes>
+	hacer				<PalRes>
+	a				<Ident>
+	:=				<OpAsig>
 	3				<CteEnt>
-	:				<Delim>
-	imprimeln				<PalRes>
-	(				<Delim>
-	"Secuencia de Fibonacci hasta "				<CteAlfa>
-	,				<Delim>
-	,				<Delim>
-	" es "				<CteAlfa>
-	,				<Delim>
-	fibo				<Ident>
-	(				<Delim>
-	)				<Delim>
-	)				<Delim>
 	;				<Delim>
-	otro				<PalRes>
-	:				<Delim>
-	imprimeln				<PalRes>
-	(				<Delim>
-	"Opción inválida"				<CteAlfa>
-	)				<Delim>
-	;				<Delim>
-	fin				<PalRes>
 	fin				<PalRes>
 	de				<PalRes>
-	procedimiento				<PalRes>
-	;				<Delim>
+	programa				<PalRes>
+	.				<Delim>
