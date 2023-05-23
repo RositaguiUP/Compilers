@@ -136,15 +136,52 @@ def checkEmpty(i, gramToComp):
 
 def hashTable(lexemas):
     declare = False
+    names = []
     CVIP = None
-    Tipo = None
-    D1 = None
-    D2 = None
+    Tipo = "E"
+    D1 = 0
+    D2 = 0
+    tablaSimbolos = []
     for lexema in lexemas:
         if lexema[0] == 'constantes':
-            pass
-        if lexema[0] == 'variables':
-            pass
+            CVIP = 'C'
+            declare = True
+        elif lexema[0] == 'variables':
+            CVIP = 'V'
+            declare = True
+
+        elif lexema[0] == 'entero' or lexema[1] == '<CteEnt>':
+            Tipo = "E"
+        elif lexema[0] == 'real' or lexema[1] == '<CteReal>':
+            Tipo = "R"
+        elif lexema[0] == 'alfabetico' or lexema[1] == '<CteAlfa>':
+            Tipo = "A"
+
+        elif lexema[1] == '<Ident>':
+            names.append(lexema[0])
+        
+        elif lexema[0] == ';' and declare:
+            for name in names:
+                fila = []
+                fila.append(name)
+                fila.append(CVIP)
+                fila.append(Tipo)
+                fila.append(str(D1))
+                fila.append(str(D2))
+                fila.append("#")
+                tablaSimbolos.append(fila)
+            names = []
+
+        elif lexema[1] == '<PalRes>':
+            declare = False
+
+    with open("Test_0.eje", "w+") as nf:
+        for fila in tablaSimbolos:
+            for columna in fila:
+                nf.write(columna + ",")
+            nf.write("\n")
+            
+
 
 def codeGenerator(lexemas):
     for lexema in lexemas:
