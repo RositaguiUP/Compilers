@@ -29,7 +29,6 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
             gramToComp = gramToComp[1:]
 
         if lex[0] == gramToComp:                        # Are the same word
-            #if i > 0:                                  # Just ommit the prgrm grammar
             parentEmpty =  False                        # If enters, it has to be completed even the cg/g could be empty
             return 0, errorMsg, parentEmpty, i
         elif empt:
@@ -47,7 +46,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
             elif empt:
                 return -2, errorMsg, parentEmpty, i
             else:
-                # Marks the error PENDING
+                errorMsg = tokenError(gramToComp[2])          # Marks the error
                 return -1, errorMsg, parentEmpty, i
             
         elif (gramToComp[0] == "|"):                    # If it is an or -> one or another
@@ -88,6 +87,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
 
                 res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty)
                 
+                gramLen = len(grams[actualState.gram])
                 if res[0] == -1:
                     if empt:
                         if res[2] == False:
@@ -97,9 +97,8 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                             return -2, errorMsg, parentEmpty, i
                     else:
                         if (i != 0 and not childEmpty):
-                            errorMsg = res[1]
-                            print(errorMsg)
-                            # 2 opciones, ahí 
+                            #errorMsg = res[1]
+                            #print(errorMsg)
                             parentErrorCode = -1
                             i = res[3]
                         else:
@@ -107,14 +106,13 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                                 i = res[3]
                             return -1, errorMsg, res[2], i
                 else:
-                    gramLen = len(grams[actualState.gram])
-                    actualState.addIndex()
                     if res[0] == 0:
                         i = res[3] + 1
                         actualParent = res[2]           # if true, the parent grammar couldn't be empty
 
+                actualState.addIndex()
                 if actualState.index == gramLen:        # Finish when ends checking all the grammar elements
-                    if parentErrorCode == 0: # and res[0] != -2:
+                    if parentErrorCode == 0:
                         i -= 1
                     return parentErrorCode, errorMsg, actualParent, i
                 
@@ -145,7 +143,6 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                         if (i != 0 and not childEmpty):
                             errorMsg = res[1]
                             print(errorMsg)
-                            # 2 opciones, ahí 
                             parentErrorCode = -1
                             i = res[3]
                         else:
@@ -155,7 +152,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                 elif res[0] == 0:
                     i = res[3] + 1
                     actualParent = res[2]               # if true, the parent grammar couldn't be empty
-            if parentErrorCode == 0: # and res[0] != -2:
+            if parentErrorCode == 0:
                 i -= 1
             return parentErrorCode, errorMsg, actualParent, i
 
