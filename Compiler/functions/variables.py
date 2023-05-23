@@ -40,7 +40,7 @@ constantes 		= [("cg", "ne", "constantes", ("g", "ne", "GpoConst"))]
 variables 		= [("cg", "ne", "variables", ("g", "ne", "GpoVars"))]
 GpoVars 		= [("cg", "ne", ("g", "ne", "GpoIds"), ":", ("g", "ne", "tipo"), ";", ("g", "e", "GpoVars"))]
 GpoIds 			= [("cg", "ne", ("t", "ne", keysList[6]), ("g", "e", "Dimens"), ("cg", "e", ":=", ("|", "ne", ("t", "ne", keysList[7]),
-					("t", "ne", keysList[6]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
+					("t", "ne", keysList[6]), ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
 Dimens 			= [("cg", "ne", "[", ("|", "ne", ("t", "ne", keysList[7]), ("t", "ne", keysList[6])), "]", ("g", "e", "Dimens"))]
 tipo 			= [("cg", "ne", ("|", "ne", "entero", "real", "alfabetico", "logico"))]
 # Func
