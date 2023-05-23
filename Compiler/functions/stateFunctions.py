@@ -133,3 +133,22 @@ def checkEmpty(i, gramToComp):
         return i
     else:
         return -1
+
+def hashTable(lexemas):
+    declare = False
+    CVIP = None
+    Tipo = None
+    D1 = None
+    D2 = None
+    for lexema in lexemas:
+        if lexema[0] == 'constantes':
+            pass
+        if lexema[0] == 'variables':
+            pass
+
+def codeGenerator(lexemas):
+    for lexema in lexemas:
+        if lexema[0] == 'constantes':
+            pass
+        if lexema[0] == 'variables':
+            pass

@@ -1,4 +1,9 @@
-variables a: entero;
+constantes rex:=32;
+alfa:= "ocho";
+
+variables a, b:=3, c: entero;
+d,e:=2.1,f:=2.6:real;
+h:="cuarenta":alfabetico;
 
 programa
 	si (1 = 2) hacer

@@ -40,7 +40,7 @@ constantes 		= [("cg", "ne", "constantes", ("g", "ne", "GpoConst"))]
 variables 		= [("cg", "ne", "variables", ("g", "ne", "GpoVars"))]
 GpoVars 		= [("cg", "ne", ("g", "ne", "GpoIds"), ":", ("g", "ne", "tipo"), ";", ("g", "e", "GpoVars"))]
 GpoIds 			= [("cg", "ne", ("t", "ne", keysList[6]), ("g", "e", "Dimens"), ("cg", "e", ":=", ("|", "ne", ("t", "ne", keysList[7]),
-					("t", "ne", keysList[6]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
+                    ("t", "ne", keysList[6]), ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
 Dimens 			= [("cg", "ne", "[", ("|", "ne", ("t", "ne", keysList[7]), ("t", "ne", keysList[6])), "]", ("g", "e", "Dimens"))]
 tipo 			= [("cg", "ne", ("|", "ne", "entero", "real", "alfabetico", "logico"))]
 # Func
@@ -70,7 +70,8 @@ asigna 			= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne",
 cuando 			= [("cg", "ne", "cuando", "el", "valor", "del", ("t", "ne", keysList[6]), "inicio", ("g", "ne", "GpoSea"), 
 	     			"otro", ":", ("g", "e", "BckEsp"), "fin")]
 GpoSea 			= [("cg", "ne", "sea", ("g", "ne", "GpoConst"), ":", ("g", "e", "BckEsp"), ("g", "e", "GpoSea"))]
-GpoConst 		= [("cg", "ne", ("g", "ne", "constantes"), ("g", "e", "GpoConst"))]
+GpoConst 		= [("cg", "ne", ("t", "ne", keysList[6]), ":=", ("|", "ne", ("t", "ne", keysList[7]),
+                    ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10])), ";", ("g", "e", "GpoConst"))]
 Udim 			= [("cg", "ne", ("g", "e", "Expr"), ("cg", "e", "[", ("g", "ne", "Udim"), "]"))]
 regresa 		= [("cg", "ne", "regresa", ("cg", "e", "(", ("g", "ne", "Exprlog"), ")"))]
 Exprlog 		= [("cg", "ne", ("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog")))]

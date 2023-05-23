@@ -1,10 +1,43 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
+	constantes				<PalRes>
+	rex				<Ident>
+	:=				<OpAsig>
+	32				<CteEnt>
+	;				<Delim>
+	alfa				<Ident>
+	:=				<OpAsig>
+	"ocho"				<CteAlfa>
+	;				<Delim>
 	variables				<PalRes>
 	a				<Ident>
+	,				<Delim>
+	b				<Ident>
+	:=				<OpAsig>
+	3				<CteEnt>
+	,				<Delim>
+	c				<Ident>
 	:				<Delim>
 	entero				<PalRes>
+	;				<Delim>
+	d				<Ident>
+	,				<Delim>
+	e				<Ident>
+	:=				<OpAsig>
+	2.1				<CteReal>
+	,				<Delim>
+	f				<Ident>
+	:=				<OpAsig>
+	2.6				<CteReal>
+	:				<Delim>
+	real				<PalRes>
+	;				<Delim>
+	h				<Ident>
+	:=				<OpAsig>
+	"cuarenta"				<CteAlfa>
+	:				<Delim>
+	alfabetico				<Ident>
 	;				<Delim>
 	programa				<PalRes>
 	si				<PalRes>

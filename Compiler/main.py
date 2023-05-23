@@ -15,6 +15,8 @@ from functions.stateFunctions import *
 
 lexemas  = []
 separate = []
+tablaSimbolos = []
+errors = 0
 
 # *************** MAIN ***************
 
@@ -99,6 +101,12 @@ with open(file, "r") as f:
 								tokens["<Ident>"].add(e)
 		else:
 			skipNext-=1
+
+	if errors == 0:
+		hashTable(lexemas)
+
+	if errors == 0:
+		codeGenerator(lexemas)
 
 #New file to write the content without spaces
 with open(fileOutput, "w+") as nf:
