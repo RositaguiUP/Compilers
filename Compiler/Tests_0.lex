@@ -1,10 +1,12 @@
 ----------------------------------------------
 	Lexema 		Token
 ----------------------------------------------
-	programa				<PalRes>
+	variables				<PalRes>
 	a				<Ident>
-	:=				<OpAsig>
-	3				<CteEnt>
+	:				<Delim>
+	entero				<PalRes>
+	;				<Delim>
+	programa				<PalRes>
 	fin				<PalRes>
 	de				<PalRes>
 	programa				<PalRes>
