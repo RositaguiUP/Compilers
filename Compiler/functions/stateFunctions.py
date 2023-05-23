@@ -28,8 +28,8 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
             gramToComp = gramToComp[1:]
 
         if lex[0] == gramToComp:                    # Are the same word
-            if i > 0:                               # Just ommit the prgrm grammar
-                parentEmpty =  False                # If enters, it has to be completed even the cg/g could be empty
+            #if i > 0:                               # Just ommit the prgrm grammar
+            parentEmpty =  False                # If enters, it has to be completed even the cg/g could be empty
             return i, errorMsg, parentEmpty
         elif empt:
             return -2, errorMsg, parentEmpty
@@ -38,7 +38,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
             return -1, errorMsg, parentEmpty
 
     elif isinstance(gramToComp, tuple):
-        
+
         if (gramToComp[0] == "t"):                # If it is a token
             if lex[1] == gramToComp[2]:             # Have same token
                 parentEmpty =  False                # If enters, it has to be completed although the cg/g could be empty
@@ -76,8 +76,8 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                 lex = lexemas[i]
                 
                 childEmpty = actualParent
-                #if gramToCompAux[1] == "e":
-                #   childEmpty = True 
+                if checkEmpty(gramToCompAux):
+                    childEmpty = True 
                 
                 res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty)
                 
@@ -85,13 +85,13 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                     if empt:
                         return -2, errorMsg, parentEmpty
                     else:
-                        if (i != 0 and not parentEmpty):
+                        if (i != 0 and not childEmpty):
                             errorMsg = res[1]
                             print(errorMsg)
                         return -1, errorMsg, parentEmpty
                 elif res[0] >= 0:
                     i = res[0] + 1
-                    actualParent = res[2]            # if true, the parent grammar couldn't be empty
+                    actualParent = res[2]           # if true, the parent grammar couldn't be empty
             i -= 1
             return i, errorMsg, actualParent
         
