@@ -48,6 +48,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                 return -1, errorMsg, parentEmpty, i, errors
             
         elif (gramToComp[0] == "|"):                    # If it is an or -> one or another
+            initialLex = lex
             for m in range(2, len(gramToComp)):         # Compare to all its possbile grammars
                 gramToCompAux = gramToComp[m]
                 if i >= len(lexemas):
@@ -66,6 +67,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                     parentEmpty = res[2]
                     return -1, errorMsg, res[2], i, errors
             if empt:
+                errorMsg=[f"Expecting any '{actualState.gram}'", initialLex[2]]
                 return -2, errorMsg, parentEmpty, i, errors
             else:
                 return -1, errorMsg, parentEmpty, i, errors

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------
  Line      | Error          | Descripction                  | Error line
 ----------------------------------------------------------------------------------------
- 6         | Sintax Error   | Missing ':'                   | 		r,h,s real;
+ 5         | Sintax Error   | Missing '<Tipo>'              | variables	i,j,k,n, vector[MAX], matriz[MAX][MAX]:;
 

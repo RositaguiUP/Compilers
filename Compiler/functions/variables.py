@@ -5,19 +5,19 @@ tokens = {
 	"<OpArit>":  set(["+", "-", "*", "/", "%", "^"]),                          #1
 	"<OpRel>":   set(["=", "<>", "<", ">", "<=", ">="]),                       #2 
 	"<OpLog>":   set(["y", "o", "no"]),                                  	   #3
-	"<PalRes>":  set(["programa", "constantes", "variables", "real", "alfanumerico",
-		   		"logico", "entero", "funcion", "inicio", "fin", "de", 
-				"procedimiento", "regresa", "si", "hacer", "sino", "cuando",
-				"el", "valor", "sea", "otro", "desde", "hasta", "incr",
+	"<PalRes>":  set(["programa", "constantes", "variables", "funcion", "inicio", 
+		   		"fin", "de", "procedimiento", "regresa", "si", "hacer", "sino",
+				"cuando", "el", "valor", "sea", "otro", "desde", "hasta", "incr",
 				"decr", "repetir", "que", "mientras", "se", "cumpla",
 				"continua", "interrumpe", "limpia","lee", "imprime",
-				"imprimenl"]),                           #4
+				"imprimenl", "prot", "llama"]),                           #4
 	"<OpAsig>":  set([":="]),    #5
 	"<Ident>":   set(),          #6
 	"<CteEnt>":  set(),          #7
 	"<CteReal>": set(),          #8
 	"<CteAlfa>": set(),          #9
 	"<CteLog>":  set(["verdadero", "falso"]),      	    #10
+	"<Tipo>":	 set(["real", "alfanumerico", "logico", "entero"]),
 	}
 
 keysList = list(tokens.keys())
@@ -44,9 +44,9 @@ GpoVars 		= [("cg", "ne", ("g", "ne", "GpoIds"), ":", ("g", "ne", "tipo"), ";", 
 GpoIds 			= [("cg", "ne", ("t", "ne", keysList[6]), ("g", "e", "Dimens"), ("cg", "e", ":=", ("|", "ne", ("t", "ne", keysList[7]),
 					("t", "ne", keysList[6]), ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
 Dimens 			= [("cg", "ne", "[", ("|", "ne", ("t", "ne", keysList[7]), ("t", "ne", keysList[6])), "]", ("g", "e", "Dimens"))]
-tipo 			= [("cg", "ne", ("|", "ne", "entero", "real", "alfanumerico", "logico"))]
+tipo 			= [("cg", "ne", ("t", "ne", keysList[11]))]
 # Func
-ProtFuncProc 	= [("cg", "ne", ("|", "ne", ("g", "ne", "ProtFunc"), ("g", "ne", "ProtProc")), ("g", "e", "ProtFuncProc"))]
+ProtFuncProc 	= [("cg", "ne", "prot", ("|", "ne", ("g", "ne", "ProtFunc"), ("g", "ne", "ProtProc")), ("g", "e", "ProtFuncProc"))]
 ProtFunc 		= [("cg", "ne", "funcion", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ":", ("g", "ne", "tipo"), ";")]
 ProtProc 		= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ";")]
 Params 			= [("cg", "ne", ("g", "ne", "GpoPars"), ":", ("g", "ne", "tipo"), ("cg", "e", ";", ("g", "ne", "Params")))]
@@ -88,7 +88,7 @@ signo 			= [("cg", "ne", "[-", ("g", "ne", "termino"))]
 termino 		= [("cg", "ne", ("|", "ne",  ("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("|", "ne", ("g", "ne", "lfunc"), ("g", "ne", "Udim") ,"]"))),
 	      			("cg", "ne", "(", ("g", "ne", "Exprlog"), ")"), ("t", "ne", keysList[7]), 
 					("t", "ne", keysList[8]),("t", "ne", keysList[9]), ("t", "ne", keysList[10])))] 
-lproc 			= [("cg", "ne", ("t", "ne", keysList[6]), "(", ("g", "e", "Uparams"), ")")]
+lproc 			= [("cg", "ne", "llama", ("t", "ne", keysList[6]), "(", ("g", "e", "Uparams"), ")")]
 lfunc 			= [("cg", "ne", ("t", "ne", keysList[6]), "(", ("g", "e", "Uparams"), ")")]
 imprime 		= [("cg", "ne", "imprime", "(", ("g", "e", "GpoExp"), ")")]
 imprimenl 		= [("cg", "ne", "imprimenl", "(", ("g", "e", "GpoExp"), ")")]
