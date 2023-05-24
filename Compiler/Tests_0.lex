@@ -19,4 +19,3 @@ a                             |<Ident>
 fin                           |<PalRes>
 de                            |<PalRes>
 programa                      |<PalRes>
-.                             |<Delim>

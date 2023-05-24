@@ -110,9 +110,12 @@ with open(fileOutput, "w+") as nf:
     [nf.write(("{:<30}|{}\n").format(l[0], l[1])) for l in lexemas]
     
 # Review Grammar
-if checkGrammar(lexemas) == 1:
+res = checkGrammar(lexemas)
+
+if res[0] == 0:
 	print("\nCompile with success!\n")
 else:
+	[print("Error: ", error) for error in res[1]]
 	print("\nThere's an error in your code :'(\n")
 
 

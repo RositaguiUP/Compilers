@@ -9,10 +9,8 @@ def checkGrammar(lexemas):
     lex = lexemas[0]
     actualState = State("Prgrm")
     gramToComp = grams[actualState.gram][actualState.index]
-    res = checkLex(lex, 0, actualState, lexemas, gramToComp, True)
-    if res[0] >= 0:
-        return 1
-    return -1
+    res = checkLex(lex, 0, actualState, lexemas, gramToComp, True, errors)
+    return res[0], res[4]
 
 # checkLex returns: Error code, message, empty, i
 # Error code:
@@ -20,7 +18,7 @@ def checkGrammar(lexemas):
 #   -2 = empty
 #   -1 = error
 
-def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
+def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
     errorMsg = ""
     empt = checkEmpty(gramToComp)                       # Could be empty
 
@@ -30,45 +28,47 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
 
         if lex[0] == gramToComp:                        # Are the same word
             parentEmpty =  False                        # If enters, it has to be completed even the cg/g could be empty
-            return 0, errorMsg, parentEmpty, i
+            return 0, errorMsg, parentEmpty, i, errors
         elif empt:
-            return -2, errorMsg, parentEmpty, i
+            return -2, errorMsg, parentEmpty, i, errors
         else:
             errorMsg = stringError(gramToComp, lex[2])          # Marks the error
-            return -1, errorMsg, parentEmpty, i
+            return -1, errorMsg, parentEmpty, i, errors
 
     elif isinstance(gramToComp, tuple):
 
         if (gramToComp[0] == "t"):                      # If it is a token
             if lex[1] == gramToComp[2]:                 # Have same token
                 parentEmpty =  False                    # If enters, it has to be completed although the cg/g could be empty
-                return 0, errorMsg, parentEmpty, i
+                return 0, errorMsg, parentEmpty, i, errors
             elif empt:
-                return -2, errorMsg, parentEmpty, i
+                return -2, errorMsg, parentEmpty, i, errors
             else:
                 errorMsg = tokenError(gramToComp[2], lex[2])          # Marks the error
-                return -1, errorMsg, parentEmpty, i
+                return -1, errorMsg, parentEmpty, i, errors
             
         elif (gramToComp[0] == "|"):                    # If it is an or -> one or another
             for m in range(2, len(gramToComp)):         # Compare to all its possbile grammars
                 gramToCompAux = gramToComp[m]
                 if i >= len(lexemas):
-                    return checkIfNextEmpty(i, gramToCompAux)
+                    line = lexemas[-1][2]
+                    res = checkIfNextEmpty(i, gramToCompAux, errors, line)
+                    return res
                 lex = lexemas[i]
-                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, True)
+                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, True, errors)
                 
                 if res[0] == 0:                         # Once one is fine, finish successfuly
                     i = res[3]
                     parentEmpty = res[2]                # if true, the parent grammar couldn't be empty
-                    return 0, errorMsg, parentEmpty, i
+                    return 0, errorMsg, parentEmpty, i, errors
                 elif res[0] == -1 and res[2] == False:
                     i = res[3]
                     parentEmpty = res[2]
-                    return -1, errorMsg, res[2], i
+                    return -1, errorMsg, res[2], i, errors
             if empt:
-                return -2, errorMsg, parentEmpty, i
+                return -2, errorMsg, parentEmpty, i, errors
             else:
-                return -1, errorMsg, parentEmpty, i
+                return -1, errorMsg, parentEmpty, i, errors
         
         elif (gramToComp[0] == "g"):                    # If it is a grammar
             actualParent = parentEmpty
@@ -78,23 +78,25 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                 gramToCompAux = grams[actualState.gram][actualState.index]
                 
                 if i >= len(lexemas):
-                    return checkIfNextEmpty(i, gramToCompAux)
+                    line = lexemas[-1][2]
+                    res = checkIfNextEmpty(i, gramToCompAux, errors, line)
+                    return res
                 lex = lexemas[i]
                 
                 childEmpty = actualParent
                 if checkEmpty(gramToCompAux):
                     childEmpty = True 
 
-                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty)
+                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty, errors)
                 
                 gramLen = len(grams[actualState.gram])
                 if res[0] == -1:
                     if empt:
                         if res[2] == False:
                             i = res[3]
-                            return -1, errorMsg, res[2], i
+                            return -1, errorMsg, res[2], i, errors
                         else:
-                            return -2, errorMsg, parentEmpty, i
+                            return -2, errorMsg, parentEmpty, i, errors
                     else:
                         if not childEmpty or res[2] == False:
                             parentErrorCode = -1
@@ -102,7 +104,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                             actualParent = res[2]
                         else:
                             i = res[3]
-                            return -1, errorMsg, res[2], i
+                            return -1, errorMsg, res[2], i, errors
                 else:
                     if res[0] == 0:
                         i = res[3] + 1
@@ -112,7 +114,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                 if actualState.index == gramLen:        # Finish when ends checking all the grammar elements
                     if parentErrorCode == 0:
                         i -= 1
-                    return parentErrorCode, errorMsg, actualParent, i
+                    return parentErrorCode, errorMsg, actualParent, i, errors
                 
         elif (gramToComp[0] == "cg"):                   # If it is a compouned grammar
             actualParent = parentEmpty
@@ -121,52 +123,62 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                 gramToCompAux =  gramToComp[k]
                 
                 if i >= len(lexemas):
-                    return checkIfNextEmpty(i, gramToCompAux)
+                    line = lexemas[-1][2]
+                    res = checkIfNextEmpty(i, gramToCompAux, errors, line)
+                    return res
                 lex = lexemas[i]
                 
                 childEmpty = actualParent
                 if checkEmpty(gramToCompAux):
                     childEmpty = True 
                 
-                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty)
+                res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty, errors)
                 
                 if res[0] == -1:
                     if empt:
                         if res[2] == False:
                             i = res[3]
-                            return -1, errorMsg, res[2], i
+                            return -1, errorMsg, res[2], i, errors
                         else:
-                            return -2, errorMsg, parentEmpty, i
+                            return -2, errorMsg, parentEmpty, i, errors
                     else:
                         if not childEmpty or res[2] == False:
                             errorMsg = res[1]
                             if errorMsg != "":
-                                print("Error: ", errorMsg)
+                                errors.append(errorMsg)
                             parentErrorCode = -1
                             i = res[3]
                             actualParent = res[2]
                         else:
                             i = res[3]
-                            return -1, errorMsg, res[2], i
+                            return -1, errorMsg, res[2], i, errors
                 elif res[0] == 0:
                     i = res[3] + 1
                     actualParent = res[2]               # if true, the parent grammar couldn't be empty
             if parentErrorCode == 0:
                 i -= 1
-            return parentErrorCode, errorMsg, actualParent, i
+            return parentErrorCode, errorMsg, actualParent, i, errors
 
         
                         # if parentErrorCode != 0:
                         #     return parentErrorCode, errorMsg, parentEmpty, i
                         # else:
     
-def checkIfNextEmpty(i, gramToComp):
-    errorMsg = ""
+def checkIfNextEmpty(i, gramToComp, errors, line):
+    errorMsg = "Unexpected end of code. "
     empt = checkEmpty(gramToComp)
     if empt:
-        return i, errorMsg, False
+        return 0, errorMsg, False, i, errors
     else:
-        return -1, errorMsg, False
+        if isinstance(gramToComp, str):     # If is a string
+            if empt == True:
+                gramToComp = gramToComp[1:]
+            errorMsg += stringError(gramToComp, line)
+        elif isinstance(gramToComp, tuple):
+            if (gramToComp[0] == "t"): 
+                errorMsg += tokenError(gramToComp, line)
+        errors.append(errorMsg)
+        return -1, errorMsg, False, i, errors
     
 def checkEmpty(gramToComp):
     empt = False
