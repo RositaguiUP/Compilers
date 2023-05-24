@@ -1,5 +1,23 @@
 ----------------------------------------------------------------------------------------
  Line      | Error          | Descripction                  | Error line
 ----------------------------------------------------------------------------------------
- 5         | Sintax Error   | Missing '<Tipo>'              | variables	i,j,k,n, vector[MAX], matriz[MAX][MAX]:;
+ 10        | Sintax Error   | Missing 'inicio'              | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'fin'                 | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'de'                  | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'funcion'             | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing ';'                   | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'programa'            | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'fin'                 | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'de'                  | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing 'programa'            | funcion fibo():entero;
+
+ 10        | Sintax Error   | Missing '.'                   | funcion fibo():entero;
 

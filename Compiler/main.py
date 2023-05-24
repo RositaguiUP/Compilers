@@ -11,10 +11,12 @@
 import sys
 from functions.lexFunctions import *
 from functions.stateFunctions import *
+from functions.codeGenerator import *
 
 
 lexemas  = []
 separate = []
+tablaSimbolos = dict()
 
 # *************** MAIN ***************
 
@@ -119,6 +121,7 @@ with open(lexOutput, "w+") as nf:
 res = checkGrammar(lexemas)
 
 if res[0] == 0:									# No errors!
+	hashTable(lexemas, tablaSimbolos)
 	print("\nCompile with success!\n")
 else:
 	errors = res[1]
