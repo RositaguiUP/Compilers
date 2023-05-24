@@ -10,6 +10,10 @@
 	:=				<OpAsig>
 	"ocho"				<CteAlfa>
 	;				<Delim>
+	alfa				<Ident>
+	:=				<OpAsig>
+	"pez"				<CteAlfa>
+	;				<Delim>
 	variables				<PalRes>
 	a				<Ident>
 	,				<Delim>

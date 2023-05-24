@@ -141,7 +141,7 @@ def hashTable(lexemas):
     Tipo = "E"
     D1 = 0
     D2 = 0
-    tablaSimbolos = []
+    tablaSimbolos = dict()
     for lexema in lexemas:
         if lexema[0] == 'constantes':
             CVIP = 'C'
@@ -163,13 +163,12 @@ def hashTable(lexemas):
         elif lexema[0] == ';' and declare:
             for name in names:
                 fila = []
-                fila.append(name)
                 fila.append(CVIP)
                 fila.append(Tipo)
                 fila.append(str(D1))
                 fila.append(str(D2))
                 fila.append("#")
-                tablaSimbolos.append(fila)
+                tablaSimbolos[name] = fila
             names = []
 
         elif lexema[1] == '<PalRes>':
@@ -177,7 +176,8 @@ def hashTable(lexemas):
 
     with open("Test_0.eje", "w+") as nf:
         for fila in tablaSimbolos:
-            for columna in fila:
+            nf.write(fila + ",")
+            for columna in tablaSimbolos[fila]:
                 nf.write(columna + ",")
             nf.write("\n")
             
