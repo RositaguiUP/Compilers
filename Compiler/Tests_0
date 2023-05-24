@@ -1,20 +1,26 @@
-<<<<<<< HEAD
-//Archivo de prueba
-
 constantes PI:=3.141592;
-	MAX:=30;
+	   MAX:=30;
 
-variables i, j, k, n:entero;
+variables i, j, k, n, vector[MAX], matriz[MAX][MAX]:entero;
+          r, s, t:real;
           Alfa, Beta:alfanumerico;
+          Log1, Log2:logico;
+
 prot funcion FacRec(n:entero):entero;
 prot funcion FacIter(n:entero):entero;
+prot procedimiento leeVec(k:entero);
+prot procedimiento leeMat(K:entero);
+prot procedimiento OrdVec(k:entero);
+prot procedimiento ImpMat(K:entero);
+prot procedimiento MulMat(k, v:entero);
+//procedimiento ImpMat(K:entero);
+
 procedimiento Selecciona()
-variables opc:alfanumerico;
 inicio
    repetir
       imprime("Dame un numero: ");
       lee(n);
-      imprime("Factorial R]ecursivo I]nteractivo S]alir: ");
+      imprime("Factorial R]recursivo I]interactivo S]salir: ");
       lee(opc);
       cuando el valor del opc 
       inicio
@@ -26,32 +32,127 @@ inicio
    hasta que (opc = "S" o opc = "s");
 fin de procedimiento;
 
+funcion FacRec(n:entero):entero
+inicio
+   si (n < 2) hacer 
+      regresa(1)
+   sino
+      regresa(n);
+fin de funcion;
+
 funcion FacIter(n:entero):entero
 variables Facto:entero;
 inicio
   Facto:=1;
-  desde el valor de i:=n hasta 2 decr 1
-  	Facto:=Facto*i;
-  regresa (facto);
+  desde el valor de i:=n hasta 2 decr 1 
+     Facto:=Facto*i;
 fin de funcion;
 
-=======
-constantes rex:=32;
-alfa:= "ocho";
+funcion VolCil(radio, altura: real):real
+inicio
+   regresa(PI*radio^2*altura);
+fin de funcion;
 
-variables a, b:=3, c: entero;
-d,e:=2.1,f:=2.6:real;
-h:="cuarenta":alfabetico;
->>>>>>> dev-damian
+funcion Concat(a, b:alfanumerico):alfanumerico
+inicio
+   regresa(a + " " + b);
+fin de funcion;
+
+funcion Compara(a, b:real;opc:entero):logico
+inicio
+   si (opc=1) hacer 
+      regresa(a<b)
+   sino 
+      si (opc=2) hacer 
+         regresa(a>b)
+      sino
+         si (opc=3) hacer regresa(a=b);
+fin de funcion;
+
+procedimiento leeVecMat()
+inicio
+   imprime("Dame elementos de Vector( N ) o Grado de Matriz( NxN ): ");
+   lee(n);
+   llama leeVec(n);
+   llama OrdVec(n);
+   llama Impvec(n);
+   llama leeMat(n);
+   llama MulMat(n);
+   llama ImpMat(n);
+fin de procedimiento;
+
+procedimiento Test()
+inicio
+   desde el valor de i:= 1 hasta 10
+   inicio
+     si (i=5) hacer continua;
+     imprimenl("i= ", i);
+   fin;
+   i:=1;
+   repetir
+      si (i = 7) hacer
+         interrumpe;
+   hasta que (i = 10);
+fin de procedimiento;
+
+procedimiento leeVec(k:entero)
+inicio
+   desde el valor de i:=1 hasta n
+   inicio
+      imprime("Vector[", i, "]: ");
+      lee(Vector[i]);
+   fin;
+fin de procedimiento;
+
+procedimiento OrdVec(k:entero)
+variables Temp:entero;
+inicio
+   desde el valor de i:=1 hasta (k-1)
+      desde el valor de j:=i+1 hasta k
+         si (i) hacer;
+fin de procedimiento;
+
+procedimiento ImpVec(k:entero)
+inicio
+   desde el valor de i:=1 hasta k
+      imprimenl("Vector[",i,"]= ");
+fin de procedimiento;
+
+procedimiento leeMat(k:entero)
+inicio
+   desde el valor de i:=1 hasta n
+      desde el valor de j:=1 hasta n
+      inicio
+         imprime("Matriz[", i, "][", j, "]: ");
+         lee(Matriz[i]);
+      fin;
+fin de procedimiento;
+
+procedimiento MulMat(k,v:entero)
+inicio
+   desde el valor de i:=1 hasta k
+      desde el valor de j:=1 hasta k
+         Matriz[i]:=v;   
+fin de procedimiento;
+
+procedimiento ImpMat(k:entero)
+inicio
+   desde el valor de i:=1 hasta k
+      desde el valor de j:=1 hasta k
+         imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
+fin de procedimiento;
 
 programa
    limpia;
-   k:=3;   
-   llama Selecciona();
+   Selecciona();
+   imprime("Dame Radio = ");lee(r);
+   imprime("Dame Altura= ");lee(s);
+   imprimenl("El Volum del Cilindro= ", VolCil(r, s);
+   imprimenl("Es el radio= ", r, " mayor que Altura= ", s, " ? ", Compara(r, s, 2));
+   leeVecmat();
    imprime("Dame tu nombre: ");
    lee(alfa);
    imprime("Dame tu Apellido: ");
-   beta:="Villalvazo";
-   imprimenl(beta);
-   imprimenl(k);
+   lee(beta);
+   imprimenl("Hola ", Concat(alfa, beta), " ya la pasaste!!!");
 fin de programa.

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 --------------------------------------------
  Lexema                        | Token
 --------------------------------------------
@@ -19,14 +18,41 @@
  k                             | <Ident>
  ,                             | <Delim>
  n                             | <Ident>
+ ,                             | <Delim>
+ vector                        | <Ident>
+ [                             | <Delim>
+ MAX                           | <Ident>
+ ]                             | <Delim>
+ ,                             | <Delim>
+ matriz                        | <Ident>
+ [                             | <Delim>
+ MAX                           | <Ident>
+ ]                             | <Delim>
+ [                             | <Delim>
+ MAX                           | <Ident>
+ ]                             | <Delim>
  :                             | <Delim>
  entero                        | <Tipo>
+ ;                             | <Delim>
+ r                             | <Ident>
+ ,                             | <Delim>
+ s                             | <Ident>
+ ,                             | <Delim>
+ t                             | <Ident>
+ :                             | <Delim>
+ real                          | <Tipo>
  ;                             | <Delim>
  Alfa                          | <Ident>
  ,                             | <Delim>
  Beta                          | <Ident>
  :                             | <Delim>
  alfanumerico                  | <Tipo>
+ ;                             | <Delim>
+ Log1                          | <Ident>
+ ,                             | <Delim>
+ Log2                          | <Ident>
+ :                             | <Delim>
+ logico                        | <Tipo>
  ;                             | <Delim>
  prot                          | <PalRes>
  funcion                       | <PalRes>
@@ -50,15 +76,57 @@
  :                             | <Delim>
  entero                        | <Tipo>
  ;                             | <Delim>
+ prot                          | <PalRes>
+ procedimiento                 | <PalRes>
+ leeVec                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ ;                             | <Delim>
+ prot                          | <PalRes>
+ procedimiento                 | <PalRes>
+ leeMat                        | <Ident>
+ (                             | <Delim>
+ K                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ ;                             | <Delim>
+ prot                          | <PalRes>
+ procedimiento                 | <PalRes>
+ OrdVec                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ ;                             | <Delim>
+ prot                          | <PalRes>
+ procedimiento                 | <PalRes>
+ ImpMat                        | <Ident>
+ (                             | <Delim>
+ K                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ ;                             | <Delim>
+ prot                          | <PalRes>
+ procedimiento                 | <PalRes>
+ MulMat                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ ,                             | <Delim>
+ v                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ ;                             | <Delim>
  procedimiento                 | <PalRes>
  Selecciona                    | <Ident>
  (                             | <Delim>
  )                             | <Delim>
- variables                     | <PalRes>
- opc                           | <Ident>
- :                             | <Delim>
- alfanumerico                  | <Tipo>
- ;                             | <Delim>
  inicio                        | <PalRes>
  repetir                       | <PalRes>
  imprime                       | <PalRes>
@@ -73,7 +141,7 @@
  ;                             | <Delim>
  imprime                       | <PalRes>
  (                             | <Delim>
- "Factorial R]ecursivo I]nteractivo S]alir: "| <CteAlfa>
+ "Factorial R]recursivo I]interactivo S]salir: "| <CteAlfa>
  )                             | <Delim>
  ;                             | <Delim>
  lee                           | <PalRes>
@@ -149,6 +217,37 @@
  procedimiento                 | <PalRes>
  ;                             | <Delim>
  funcion                       | <PalRes>
+ FacRec                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ inicio                        | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ n                             | <Ident>
+ <                             | <OpRel>
+ 2                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ 1                             | <CteEnt>
+ )                             | <Delim>
+ sino                          | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ funcion                       | <PalRes>
+ ;                             | <Delim>
+ funcion                       | <PalRes>
  FacIter                       | <Ident>
  (                             | <Delim>
  n                             | <Ident>
@@ -184,24 +283,561 @@
  *                             | <OpArit>
  i                             | <Ident>
  ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ funcion                       | <PalRes>
+ ;                             | <Delim>
+ funcion                       | <PalRes>
+ VolCil                        | <Ident>
+ (                             | <Delim>
+ radio                         | <Ident>
+ ,                             | <Delim>
+ altura                        | <Ident>
+ :                             | <Delim>
+ real                          | <Tipo>
+ )                             | <Delim>
+ :                             | <Delim>
+ real                          | <Tipo>
+ inicio                        | <PalRes>
  regresa                       | <PalRes>
  (                             | <Delim>
- facto                         | <Ident>
+ PI                            | <Ident>
+ *                             | <OpArit>
+ radio                         | <Ident>
+ ^                             | <OpArit>
+ 2                             | <CteEnt>
+ *                             | <OpArit>
+ altura                        | <Ident>
  )                             | <Delim>
  ;                             | <Delim>
  fin                           | <PalRes>
  de                            | <PalRes>
  funcion                       | <PalRes>
  ;                             | <Delim>
+ funcion                       | <PalRes>
+ Concat                        | <Ident>
+ (                             | <Delim>
+ a                             | <Ident>
+ ,                             | <Delim>
+ b                             | <Ident>
+ :                             | <Delim>
+ alfanumerico                  | <Tipo>
+ )                             | <Delim>
+ :                             | <Delim>
+ alfanumerico                  | <Tipo>
+ inicio                        | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ a                             | <Ident>
+ +                             | <OpArit>
+ " "                           | <CteAlfa>
+ +                             | <OpArit>
+ b                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ funcion                       | <PalRes>
+ ;                             | <Delim>
+ funcion                       | <PalRes>
+ Compara                       | <Ident>
+ (                             | <Delim>
+ a                             | <Ident>
+ ,                             | <Delim>
+ b                             | <Ident>
+ :                             | <Delim>
+ real                          | <Tipo>
+ ;                             | <Delim>
+ opc                           | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ :                             | <Delim>
+ logico                        | <Tipo>
+ inicio                        | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ opc                           | <Ident>
+ =                             | <OpRel>
+ 1                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ a                             | <Ident>
+ <                             | <OpRel>
+ b                             | <Ident>
+ )                             | <Delim>
+ sino                          | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ opc                           | <Ident>
+ =                             | <OpRel>
+ 2                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ a                             | <Ident>
+ >                             | <OpRel>
+ b                             | <Ident>
+ )                             | <Delim>
+ sino                          | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ opc                           | <Ident>
+ =                             | <OpRel>
+ 3                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ a                             | <Ident>
+ =                             | <OpRel>
+ b                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ funcion                       | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ leeVecMat                     | <Ident>
+ (                             | <Delim>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Dame elementos de Vector( N ) o Grado de Matriz( NxN ): "| <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ lee                           | <PalRes>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ leeVec                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ OrdVec                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ Impvec                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ leeMat                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ MulMat                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ ImpMat                        | <Ident>
+ (                             | <Delim>
+ n                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ Test                          | <Ident>
+ (                             | <Delim>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ 10                            | <CteEnt>
+ inicio                        | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ i                             | <Ident>
+ =                             | <OpRel>
+ 5                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ continua                      | <PalRes>
+ ;                             | <Delim>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ "i= "                         | <CteAlfa>
+ ,                             | <Delim>
+ i                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ ;                             | <Delim>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ ;                             | <Delim>
+ repetir                       | <PalRes>
+ si                            | <PalRes>
+ (                             | <Delim>
+ i                             | <Ident>
+ =                             | <OpRel>
+ 7                             | <CteEnt>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ interrumpe                    | <PalRes>
+ ;                             | <Delim>
+ hasta                         | <PalRes>
+ que                           | <PalRes>
+ (                             | <Delim>
+ i                             | <Ident>
+ =                             | <OpRel>
+ 10                            | <CteEnt>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ leeVec                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ n                             | <Ident>
+ inicio                        | <PalRes>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Vector["                     | <CteAlfa>
+ ,                             | <Delim>
+ i                             | <Ident>
+ ,                             | <Delim>
+ "]: "                         | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ lee                           | <PalRes>
+ (                             | <Delim>
+ Vector                        | <Ident>
+ [                             | <Delim>
+ i                             | <Ident>
+ ]                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ OrdVec                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ variables                     | <PalRes>
+ Temp                          | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ ;                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ (                             | <Delim>
+ k                             | <Ident>
+ -                             | <OpArit>
+ 1                             | <CteEnt>
+ )                             | <Delim>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ j                             | <Ident>
+ :=                            | <OpAsig>
+ i                             | <Ident>
+ +                             | <OpArit>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ si                            | <PalRes>
+ (                             | <Delim>
+ i                             | <Ident>
+ )                             | <Delim>
+ hacer                         | <PalRes>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ ImpVec                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ "Vector["                     | <CteAlfa>
+ ,                             | <Delim>
+ i                             | <Ident>
+ ,                             | <Delim>
+ "]= "                         | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ leeMat                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ n                             | <Ident>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ j                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ n                             | <Ident>
+ inicio                        | <PalRes>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Matriz["                     | <CteAlfa>
+ ,                             | <Delim>
+ i                             | <Ident>
+ ,                             | <Delim>
+ "]["                          | <CteAlfa>
+ ,                             | <Delim>
+ j                             | <Ident>
+ ,                             | <Delim>
+ "]: "                         | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ lee                           | <PalRes>
+ (                             | <Delim>
+ Matriz                        | <Ident>
+ [                             | <Delim>
+ i                             | <Ident>
+ ]                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ MulMat                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ ,                             | <Delim>
+ v                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ j                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ Matriz                        | <Ident>
+ [                             | <Delim>
+ i                             | <Ident>
+ ]                             | <Delim>
+ :=                            | <OpAsig>
+ v                             | <Ident>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
+ procedimiento                 | <PalRes>
+ ImpMat                        | <Ident>
+ (                             | <Delim>
+ k                             | <Ident>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ )                             | <Delim>
+ inicio                        | <PalRes>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ j                             | <Ident>
+ :=                            | <OpAsig>
+ 1                             | <CteEnt>
+ hasta                         | <PalRes>
+ k                             | <Ident>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ "Matriz["                     | <CteAlfa>
+ ,                             | <Delim>
+ i                             | <Ident>
+ ,                             | <Delim>
+ "]["                          | <CteAlfa>
+ ,                             | <Delim>
+ j                             | <Ident>
+ ,                             | <Delim>
+ "]= "                         | <CteAlfa>
+ ,                             | <Delim>
+ Matriz                        | <Ident>
+ [                             | <Delim>
+ i                             | <Ident>
+ ]                             | <Delim>
+ [                             | <Delim>
+ j                             | <Ident>
+ ]                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ procedimiento                 | <PalRes>
+ ;                             | <Delim>
  programa                      | <PalRes>
  limpia                        | <PalRes>
  ;                             | <Delim>
- k                             | <Ident>
- :=                            | <OpAsig>
- 3                             | <CteEnt>
- ;                             | <Delim>
- llama                         | <PalRes>
  Selecciona                    | <Ident>
+ (                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Dame Radio = "               | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ lee                           | <PalRes>
+ (                             | <Delim>
+ r                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Dame Altura= "               | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ lee                           | <PalRes>
+ (                             | <Delim>
+ s                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ "El Volum del Cilindro= "     | <CteAlfa>
+ ,                             | <Delim>
+ VolCil                        | <Ident>
+ (                             | <Delim>
+ r                             | <Ident>
+ ,                             | <Delim>
+ s                             | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ "Es el radio= "               | <CteAlfa>
+ ,                             | <Delim>
+ r                             | <Ident>
+ ,                             | <Delim>
+ " mayor que Altura= "         | <CteAlfa>
+ ,                             | <Delim>
+ s                             | <Ident>
+ ,                             | <Delim>
+ " ? "                         | <CteAlfa>
+ ,                             | <Delim>
+ Compara                       | <Ident>
+ (                             | <Delim>
+ r                             | <Ident>
+ ,                             | <Delim>
+ s                             | <Ident>
+ ,                             | <Delim>
+ 2                             | <CteEnt>
+ )                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ leeVecmat                     | <Ident>
  (                             | <Delim>
  )                             | <Delim>
  ;                             | <Delim>
@@ -220,84 +856,26 @@
  "Dame tu Apellido: "          | <CteAlfa>
  )                             | <Delim>
  ;                             | <Delim>
- beta                          | <Ident>
- :=                            | <OpAsig>
- "Villalvazo"                  | <CteAlfa>
- ;                             | <Delim>
- imprimenl                     | <PalRes>
+ lee                           | <PalRes>
  (                             | <Delim>
  beta                          | <Ident>
  )                             | <Delim>
  ;                             | <Delim>
  imprimenl                     | <PalRes>
  (                             | <Delim>
- k                             | <Ident>
+ "Hola "                       | <CteAlfa>
+ ,                             | <Delim>
+ Concat                        | <Ident>
+ (                             | <Delim>
+ alfa                          | <Ident>
+ ,                             | <Delim>
+ beta                          | <Ident>
+ )                             | <Delim>
+ ,                             | <Delim>
+ " ya la pasaste!!!"           | <CteAlfa>
  )                             | <Delim>
  ;                             | <Delim>
  fin                           | <PalRes>
  de                            | <PalRes>
  programa                      | <PalRes>
  .                             | <Delim>
-=======
-----------------------------------------------
-	Lexema 		Token
-----------------------------------------------
-	constantes				<PalRes>
-	rex				<Ident>
-	:=				<OpAsig>
-	32				<CteEnt>
-	;				<Delim>
-	alfa				<Ident>
-	:=				<OpAsig>
-	"ocho"				<CteAlfa>
-	;				<Delim>
-	alfa				<Ident>
-	:=				<OpAsig>
-	"pez"				<CteAlfa>
-	;				<Delim>
-	variables				<PalRes>
-	a				<Ident>
-	,				<Delim>
-	b				<Ident>
-	:=				<OpAsig>
-	3				<CteEnt>
-	,				<Delim>
-	c				<Ident>
-	:				<Delim>
-	entero				<PalRes>
-	;				<Delim>
-	d				<Ident>
-	,				<Delim>
-	e				<Ident>
-	:=				<OpAsig>
-	2.1				<CteReal>
-	,				<Delim>
-	f				<Ident>
-	:=				<OpAsig>
-	2.6				<CteReal>
-	:				<Delim>
-	real				<PalRes>
-	;				<Delim>
-	h				<Ident>
-	:=				<OpAsig>
-	"cuarenta"				<CteAlfa>
-	:				<Delim>
-	alfabetico				<Ident>
-	;				<Delim>
-	programa				<PalRes>
-	si				<PalRes>
-	(				<Delim>
-	1				<CteEnt>
-	=				<OpRel>
-	2				<CteEnt>
-	)				<Delim>
-	hacer				<PalRes>
-	a				<Ident>
-	:=				<OpAsig>
-	3				<CteEnt>
-	;				<Delim>
-	fin				<PalRes>
-	de				<PalRes>
-	programa				<PalRes>
-	.				<Delim>
->>>>>>> dev-damian

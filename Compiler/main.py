@@ -16,12 +16,8 @@ from functions.codeGenerator import *
 
 lexemas  = []
 separate = []
-<<<<<<< HEAD
 tablaSimbolos = dict()
-=======
-tablaSimbolos = []
 errors = 0
->>>>>>> dev-damian
 
 # *************** MAIN ***************
 
@@ -112,7 +108,6 @@ with open(file, "r") as f:
 		else:
 			skipNext-=1
 
-<<<<<<< HEAD
 #New file to write the content of the lexemas
 with open(lexOutput, "w+") as nf:
     div = "--------------------------------------------\n"
@@ -122,21 +117,6 @@ with open(lexOutput, "w+") as nf:
     nf.write(div)
     [nf.write((" {:<30}| {}\n").format(l[0], l[1])) for l in lexemas]
 
-
-=======
-	if errors == 0:
-		hashTable(lexemas)
-
-	if errors == 0:
-		codeGenerator(lexemas)
-
-#New file to write the content without spaces
-with open(fileOutput, "w+") as nf:
-    header = "----------------------------------------------\n\tLexema \t\tToken\n----------------------------------------------"
-    nf.write(header)
-    [nf.write("\n\t" + l[0] + "\t\t\t\t" + l[1]) for l in lexemas]
-    
->>>>>>> dev-damian
 # Review Grammar
 res = checkGrammar(lexemas)
 

@@ -1,45 +1,23 @@
 ----------------------------------------------------------------------------------------
  Line      | Error          | Descripction                  | Error line
 ----------------------------------------------------------------------------------------
-<<<<<<< HEAD
- 6         | Sintax Error   | Missing ')'                   |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing '('                   |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing ')'                   |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing ')'                   |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'fin'                 |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing ';'                   |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'de'                  |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing 'fin'                 |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'procedimiento'       |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing 'de'                  |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing 'procedimiento'       |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'programa'            |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing ';'                   |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'fin'                 |    imprime("Dame un numero: ", llama Selecciona());
+ 142       | Sintax Error   | Missing 'programa'            |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 
- 6         | Sintax Error   | Missing 'de'                  |    imprime("Dame un numero: ", llama Selecciona());
-=======
- 10        | Sintax Error   | Missing 'inicio'              | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'fin'                 | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'de'                  | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'funcion'             | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing ';'                   | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'programa'            | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'fin'                 | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'de'                  | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing 'programa'            | funcion fibo():entero;
-
- 10        | Sintax Error   | Missing '.'                   | funcion fibo():entero;
->>>>>>> 21ae00a1e930fc49ef02d28b838179f7fa791ed8
+ 142       | Sintax Error   | Missing 'fin'                 |          imprimenl("Matriz[", i, "][", j, "]= ", Matriz[i][j]);
 

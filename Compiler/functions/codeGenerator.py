@@ -35,18 +35,18 @@ def hashTable(lexemas, tablaSimbolos):
         elif lexema[0] == 'logico' or lexema[1] == '<CteLog>':
             Tipo = "L"
 
-        elif lexema[0] == ':' or lexema[0] == ',' or (CVIPF == 'C' and lexema[0] == ':='):
+        elif lexema[0] == ':' or lexema[0] == ',' or (CVIPF == 'C' and lexema[0] == ':=') and declare:
             Dimensiones.append((D1,D2))
             D1 = 0
             D2 = 0
 
-        elif lexema[0] == '[':
+        elif lexema[0] == '[' and declare:
             if D1 != 0:
                 D2 = -1
             else:
                 D1 = -1
             
-        elif lexema[1] == '<Ident>':
+        elif lexema[1] == '<Ident>' and declare:
             names.append(lexema[0])
 
         elif lexema[0] == ';' and declare:
