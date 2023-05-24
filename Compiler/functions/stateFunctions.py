@@ -96,12 +96,12 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                         else:
                             return -2, errorMsg, parentEmpty, i
                     else:
-                        if (i != 0 and not childEmpty):
+                        if not childEmpty or res[2] == False:
                             parentErrorCode = -1
                             i = res[3]
+                            actualParent = res[2]
                         else:
-                            if res[2] == False:
-                                i = res[3]
+                            i = res[3]
                             return -1, errorMsg, res[2], i
                 else:
                     if res[0] == 0:
@@ -138,14 +138,15 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                         else:
                             return -2, errorMsg, parentEmpty, i
                     else:
-                        if (i != 0 and not childEmpty):
+                        if not childEmpty or res[2] == False:
                             errorMsg = res[1]
-                            print(errorMsg) #"Error: " + 
+                            if errorMsg != "":
+                                print("Error: " + errorMsg)
                             parentErrorCode = -1
                             i = res[3]
+                            actualParent = res[2]
                         else:
-                            if res[2] == False:
-                                i = res[3]
+                            i = res[3]
                             return -1, errorMsg, res[2], i
                 elif res[0] == 0:
                     i = res[3] + 1
