@@ -11,7 +11,7 @@ tokens = {
 				"el", "valor", "sea", "otro", "desde", "hasta", "incr",
 				"decr", "repetir", "que", "mientras", "se", "cumpla",
 				"continua", "interrumpe", "limpia","lee", "imprime",
-				"imprimeln"]),                           #4
+				"imprimenl"]),                           #4
 	"<OpAsig>":  set([":="]),    #5
 	"<Ident>":   set(),          #6
 	"<CteEnt>":  set(),          #7
@@ -36,23 +36,25 @@ keysList = list(tokens.keys())
 Prgrm 			= [("cg", "ne", ("g", "e", "constantes"), ("g", "e", "variables"), ("g", "e", "ProtFuncProc"), ("g", "e", "FuncProc"),							# Revisar constantes
 	     			"programa", ("g", "e", "Block"), "fin", "de", "programa", ".")]
 # Vars
-constantes 		= [("cg", "ne", "constantes", ("g", "ne", "GpoConst"))]
+constantes 		= [("cg", "ne", "constantes", ("g", "ne", "GpoConstDec"))]
+GpoConstDec     = [("cg", "ne", ("t", "ne", keysList[6]), ":=", ("|", "ne", ("t", "ne", keysList[7]),
+                    ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10])), ";", ("g", "e", "GpoConstDec"))]
 variables 		= [("cg", "ne", "variables", ("g", "ne", "GpoVars"))]
 GpoVars 		= [("cg", "ne", ("g", "ne", "GpoIds"), ":", ("g", "ne", "tipo"), ";", ("g", "e", "GpoVars"))]
 GpoIds 			= [("cg", "ne", ("t", "ne", keysList[6]), ("g", "e", "Dimens"), ("cg", "e", ":=", ("|", "ne", ("t", "ne", keysList[7]),
 					("t", "ne", keysList[6]), ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10]))), ("cg", "e", ",", ("g", "e", "GpoIds")))]
 Dimens 			= [("cg", "ne", "[", ("|", "ne", ("t", "ne", keysList[7]), ("t", "ne", keysList[6])), "]", ("g", "e", "Dimens"))]
-tipo 			= [("cg", "ne", ("|", "ne", "entero", "real", "alfabetico", "logico"))]
+tipo 			= [("cg", "ne", ("|", "ne", "entero", "real", "alfanumerico", "logico"))]
 # Func
-ProtFuncProc 	= [("cg", "ne", ("|", "ne", ("g", "ne", "ProtFunc"), ("cg", "ne", ("g", "ne", "ProtProc"), ("g", "e", "ProtFuncProc"))))]
-ProtFunc 		= [("cg", "ne", "funcion", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "ne", "Params"), ")", ":", ("g", "ne", "tipo"), ";")]
-ProtProc 		= [("cg", "ne", "procedimiento", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "ne", "Params"), ")", ";")]
+ProtFuncProc 	= [("cg", "ne", ("|", "ne", ("g", "ne", "ProtFunc"), ("g", "ne", "ProtProc")), ("g", "e", "ProtFuncProc"))]
+ProtFunc 		= [("cg", "ne", "funcion", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ":", ("g", "ne", "tipo"), ";")]
+ProtProc 		= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ";")]
 Params 			= [("cg", "ne", ("g", "ne", "GpoPars"), ":", ("g", "ne", "tipo"), ("cg", "e", ";", ("g", "ne", "Params")))]
 GpoPars 		= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", ",", ("g", "ne", "GpoPars")))]
-FuncProc 		= [("cg", "ne", ("|", "ne", ("g", "ne", "procedimiento"), ("cg", "ne", ("g", "ne", "funcion"), ("g", "e", "FuncProc"))))]
-procedimiento 	= [("cg", "ne", "procedimiento", ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
+FuncProc 		= [("cg", "ne", ("|", "ne", ("g", "ne", "procedimiento"), ("g", "ne", "funcion")), ("g", "e", "FuncProc"))]
+procedimiento 	= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "procedimiento", ";")]
-funcion 		= [("cg", "ne", "funcion",  ("g", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
+funcion 		= [("cg", "ne", "funcion",  ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "funcion", ";")]
 # Statements
 Block 			= [("cg", "ne", ("g", "e", "estatuto"), ";", ("g", "e", "Block"))]
@@ -68,10 +70,10 @@ repetir 		= [("cg", "ne", "repetir", ("g", "e", "Block"), "hasta", "que", "(", (
 mientras 		= [("cg", "ne", "mientras", "se", "cumpla", "que", "(", ("g", "ne", "Exprlog"), ")", ("g", "e", "BckEsp"))]
 asigna 			= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne", "Udim"), "]"), ":=", ("g", "ne", "Exprlog"))]
 cuando 			= [("cg", "ne", "cuando", "el", "valor", "del", ("t", "ne", keysList[6]), "inicio", ("g", "ne", "GpoSea"), 
-	     			"otro", ":", ("g", "e", "BckEsp"), "fin")]
+	     			("cg", "e", "otro", ":", ("g", "e", "BckEsp")), "fin")]
 GpoSea 			= [("cg", "ne", "sea", ("g", "ne", "GpoConst"), ":", ("g", "e", "BckEsp"), ("g", "e", "GpoSea"))]
-GpoConst         = [("cg", "ne", ("t", "ne", keysList[6]), ":=", ("|", "ne", ("t", "ne", keysList[7]),
-                    ("t", "ne", keysList[8]), ("t", "ne", keysList[9]), ("t", "ne", keysList[10])), ";", ("g", "e", "GpoConst"))]
+GpoConst        = [("cg", "ne", ("|", "ne", ("t", "ne", keysList[6]),  ("t", "ne", keysList[7]), ("t", "ne", keysList[8]),
+				 	("t", "ne", keysList[9]), ("t", "ne", keysList[10])), ("cg", "e", ",", ("g", "ne", "GpoConst")))]
 Udim 			= [("cg", "ne", ("g", "e", "Expr"), ("cg", "e", "[", ("g", "ne", "Udim"), "]"))]
 regresa 		= [("cg", "ne", "regresa", ("cg", "e", "(", ("g", "ne", "Exprlog"), ")"))]
 Exprlog 		= [("cg", "ne", ("g", "ne", "Opy"), ("cg", "e", "o", ("g", "ne", "Exprlog")))]
@@ -101,6 +103,7 @@ leer 			= [("cg", "ne", "lee", "(", ("t", "ne", keysList[6]), ("cg", "e", "[", (
 grams = {
 	"Prgrm": 			Prgrm,
 	"constantes": 		constantes,
+	"GpoConstDec":		GpoConstDec,
 	"variables": 		variables,
 	"GpoVars": 			GpoVars,
 	"GpoIds": 			GpoIds,

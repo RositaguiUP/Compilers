@@ -165,7 +165,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                         # else:
     
 def checkIfNextEmpty(i, gramToComp, errors, line):
-    errorMsg = "Unexpected end of code. "
+    errorMsg = ""
     empt = checkEmpty(gramToComp)
     if empt:
         return 0, errorMsg, False, i, errors

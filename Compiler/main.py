@@ -20,7 +20,10 @@ separate = []
 
 # Gets input and output file's names
 file = "Tests_0" #Tests_0" #sys.argv[1]
-fileOutput = sys.argv[2] if len(sys.argv) == 3 else "Tests_0.lex"
+lexOutput = sys.argv[2] if len(sys.argv) == 3 else "Tests_0.lex"
+errOutput = sys.argv[2] if len(sys.argv) == 3 else "Tests_0.err"
+
+codeLines = []
 
 # File to read
 with open(file, "r") as f:
@@ -33,6 +36,7 @@ with open(file, "r") as f:
 
 	# To analyze each character of each line on the file
 	for i,l in enumerate(f):
+		codeLines.append(l)
 		i += 1
 		delimiters = ".,;()[]:\"+-*/%^=>< \n\t"
 		separate.extend(split_with_delimiters(l, delimiters,i))
@@ -101,30 +105,40 @@ with open(file, "r") as f:
 		else:
 			skipNext-=1
 
-#New file to write the content without spaces
-with open(fileOutput, "w+") as nf:
-   
-    nf.write(("{:<30}|{}\n").format('Lexema', 'Token'))
-    header = "--------------------------------------------\n"
-    nf.write(header)
-    [nf.write(("{:<30}|{}\n").format(l[0], l[1])) for l in lexemas]
-    
+#New file to write the content of the lexemas
+with open(lexOutput, "w+") as nf:
+    div = "--------------------------------------------\n"
+    nf.write(div)
+    nf.write((" {:<30}| {}\n").format('Lexema', 'Token'))
+    div = "--------------------------------------------\n"
+    nf.write(div)
+    [nf.write((" {:<30}| {}\n").format(l[0], l[1])) for l in lexemas]
+
+
 # Review Grammar
 res = checkGrammar(lexemas)
 
-if res[0] == 0:
+if res[0] == 0:									# No errors!
 	print("\nCompile with success!\n")
 else:
-	[print("Error: ", error) for error in res[1]]
+	errors = res[1]
+	numErrs = len(errors)
+	if numErrs > 10:
+		numErrs = 10
+	[print("Error: ", errors[i][0], " in line ", errors[i][1]) for i in range(0, numErrs)]
 	print("\nThere's an error in your code :'(\n")
+	    
+	#New file to write the content of the errors
+	with open(errOutput, "w+") as nf:
+		div = "----------------------------------------------------------------------------------------\n"
+		nf.write(div)
+		nf.write((" {:<10}| {:<15}| {:<30}| {}\n").format('Line', 'Error', 'Descripction', 'Error line'))
+		div = "----------------------------------------------------------------------------------------\n"
+		nf.write(div)
+		[nf.write((" {:<10}| {:<15}| {:<30}| {}\n").format(errors[i][1], 'Sintax Error', errors[i][0], codeLines[errors[i][1]-1])) for i in range(0, numErrs)]
 
 
 # programa
 # 	si (1 = 2) hacer limpias;
 #   a:=3;
-# fin de programa
-
-
-# programa
-# 	variables a: entero;
 # fin de programa
