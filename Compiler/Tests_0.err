@@ -1,7 +1,23 @@
 ----------------------------------------------------------------------------------------
  Line      | Error          | Descripction                  | Error line
 ----------------------------------------------------------------------------------------
- 7         | Sintax Error   | Missing '<CteEnt>'            |   	Facto:=Facto*i;
+ 6         | Sintax Error   | Missing ')'                   |    imprime("Dame un numero: ", llama Selecciona());
 
- 7         | Sintax Error   | Missing '<CteEnt>'            |   	Facto:=Facto*i;
+ 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'fin'                 |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'de'                  |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'procedimiento'       |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing ';'                   |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'programa'            |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'fin'                 |    imprime("Dame un numero: ", llama Selecciona());
+
+ 6         | Sintax Error   | Missing 'de'                  |    imprime("Dame un numero: ", llama Selecciona());
 

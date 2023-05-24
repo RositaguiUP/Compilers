@@ -52,7 +52,7 @@ ProtProc 		= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6]
 Params 			= [("cg", "ne", ("g", "ne", "GpoPars"), ":", ("g", "ne", "tipo"), ("cg", "e", ";", ("g", "ne", "Params")))]
 GpoPars 		= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", ",", ("g", "ne", "GpoPars")))]
 FuncProc 		= [("cg", "ne", ("|", "ne", ("g", "ne", "procedimiento"), ("g", "ne", "funcion")), ("g", "e", "FuncProc"))]
-procedimiento 	= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
+procedimiento 	= [("cg", "ne", "procedimiento", ("t", "ne", keysList[6]), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "procedimiento", ";")]
 funcion 		= [("cg", "ne", "funcion", ("t", "ne", keysList[6]), "(", ("g", "e", "Params"), ")", ":", ("g", "ne", "tipo"), ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "funcion", ";")]

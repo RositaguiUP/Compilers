@@ -148,6 +148,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                             errorMsg = res[1]
                             if errorMsg != "":
                                 errors.append(errorMsg)
+                            errorMsg = ""
                             parentErrorCode = -1
                             i = res[3]
                             actualParent = res[2]

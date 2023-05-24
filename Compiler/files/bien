@@ -17,7 +17,7 @@ inicio
       lee(opc);
       cuando el valor del opc 
       inicio
-         sea "R", "r": imprimenl("Factorial Recursivo de ", n, " es= ")
+         sea "R", "r": imprimenl("Factorial Recursivo de ", n, " es= ", llama facRec(m))
          sea "I", "i": imprimenl("Factorial Iterativo de ", n, " es= ")
          otro: si (opc <> "S" y opc <> "s") hacer 
                   imprimenl("Opcion Invalida!!!")
