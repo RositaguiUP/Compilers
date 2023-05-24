@@ -93,7 +93,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                 
                 gramLen = len(grams[actualState.gram])
                 if res[0] == -1:
-                    if empt:
+                    if empt and actualParent:
                         if res[2] == False:
                             i = res[3]
                             return -1, errorMsg, res[2], i, errors
@@ -137,7 +137,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty, errors):
                 res = checkLex(lex, i, actualState, lexemas, gramToCompAux, childEmpty, errors)
                 
                 if res[0] == -1:
-                    if empt:
+                    if empt and actualParent:
                         if res[2] == False:
                             i = res[3]
                             return -1, errorMsg, res[2], i, errors

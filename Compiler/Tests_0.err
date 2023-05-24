@@ -1,5 +1,7 @@
 ----------------------------------------------------------------------------------------
  Line      | Error          | Descripction                  | Error line
 ----------------------------------------------------------------------------------------
- 5         | Sintax Error   | Missing '<Tipo>'              | variables	i,j,k,n, vector[MAX], matriz[MAX][MAX]:;
+ 7         | Sintax Error   | Missing '<CteEnt>'            |   	Facto:=Facto*i;
+
+ 7         | Sintax Error   | Missing '<CteEnt>'            |   	Facto:=Facto*i;
 

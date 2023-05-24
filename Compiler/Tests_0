@@ -1,12 +1,22 @@
 //Archivo de prueba
 
-constantes 	PI:=3.141593;
-		MAX:=30;
-variables	i,j,k,n, vector[MAX], matriz[MAX][MAX]:entero;
-		r,h,s:=3:real;
-		alfa,beta:alfanumerico;
-		log1,log2:logico;
+funcion FacIter(n:entero):entero
+inicio
+  Facto:=1;
+  desde el valor de i:=n hasta 2 incr 8
+  	Facto:=Facto*i;
+  regresa (facto);
+fin de funcion;
+
 
 programa
-	lee(k);
+   limpia;
+   k:=3;   
+   llama Selecciona();
+   imprime("Dame tu nombre: ");
+   lee(alfa);
+   imprime("Dame tu Apellido: ");
+   beta:="Villalvazo";
+   imprimenl(beta);
+   imprimenl(k);
 fin de programa.

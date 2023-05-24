@@ -1,63 +1,83 @@
 --------------------------------------------
  Lexema                        | Token
 --------------------------------------------
- constantes                    | <PalRes>
- PI                            | <Ident>
- :=                            | <OpAsig>
- 3.141593                      | <CteReal>
- ;                             | <Delim>
- MAX                           | <Ident>
- :=                            | <OpAsig>
- 30                            | <CteEnt>
- ;                             | <Delim>
- variables                     | <PalRes>
- i                             | <Ident>
- ,                             | <Delim>
- j                             | <Ident>
- ,                             | <Delim>
- k                             | <Ident>
- ,                             | <Delim>
+ funcion                       | <PalRes>
+ FacIter                       | <Ident>
+ (                             | <Delim>
  n                             | <Ident>
- ,                             | <Delim>
- vector                        | <Ident>
- [                             | <Delim>
- MAX                           | <Ident>
- ]                             | <Delim>
- ,                             | <Delim>
- matriz                        | <Ident>
- [                             | <Delim>
- MAX                           | <Ident>
- ]                             | <Delim>
- [                             | <Delim>
- MAX                           | <Ident>
- ]                             | <Delim>
  :                             | <Delim>
  entero                        | <Tipo>
- ;                             | <Delim>
- r                             | <Ident>
- ,                             | <Delim>
- h                             | <Ident>
- ,                             | <Delim>
- s                             | <Ident>
+ )                             | <Delim>
+ :                             | <Delim>
+ entero                        | <Tipo>
+ inicio                        | <PalRes>
+ Facto                         | <Ident>
  :=                            | <OpAsig>
- 3                             | <CteEnt>
- :                             | <Delim>
- real                          | <Tipo>
+ 1                             | <CteEnt>
  ;                             | <Delim>
- alfa                          | <Ident>
- ,                             | <Delim>
- beta                          | <Ident>
- :                             | <Delim>
- alfanumerico                  | <Tipo>
+ desde                         | <PalRes>
+ el                            | <PalRes>
+ valor                         | <PalRes>
+ de                            | <PalRes>
+ i                             | <Ident>
+ :=                            | <OpAsig>
+ n                             | <Ident>
+ hasta                         | <PalRes>
+ 2                             | <CteEnt>
+ incr                          | <PalRes>
+ 8                             | <CteEnt>
+ Facto                         | <Ident>
+ :=                            | <OpAsig>
+ Facto                         | <Ident>
+ *                             | <OpArit>
+ i                             | <Ident>
  ;                             | <Delim>
- log1                          | <Ident>
- ,                             | <Delim>
- log2                          | <Ident>
- :                             | <Delim>
- logico                        | <Tipo>
+ regresa                       | <PalRes>
+ (                             | <Delim>
+ facto                         | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ fin                           | <PalRes>
+ de                            | <PalRes>
+ funcion                       | <PalRes>
  ;                             | <Delim>
  programa                      | <PalRes>
+ limpia                        | <PalRes>
+ ;                             | <Delim>
+ k                             | <Ident>
+ :=                            | <OpAsig>
+ 3                             | <CteEnt>
+ ;                             | <Delim>
+ llama                         | <PalRes>
+ Selecciona                    | <Ident>
+ (                             | <Delim>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Dame tu nombre: "            | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
  lee                           | <PalRes>
+ (                             | <Delim>
+ alfa                          | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprime                       | <PalRes>
+ (                             | <Delim>
+ "Dame tu Apellido: "          | <CteAlfa>
+ )                             | <Delim>
+ ;                             | <Delim>
+ beta                          | <Ident>
+ :=                            | <OpAsig>
+ "Villalvazo"                  | <CteAlfa>
+ ;                             | <Delim>
+ imprimenl                     | <PalRes>
+ (                             | <Delim>
+ beta                          | <Ident>
+ )                             | <Delim>
+ ;                             | <Delim>
+ imprimenl                     | <PalRes>
  (                             | <Delim>
  k                             | <Ident>
  )                             | <Delim>

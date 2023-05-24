@@ -54,7 +54,7 @@ GpoPars 		= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", ",", ("g", "ne",
 FuncProc 		= [("cg", "ne", ("|", "ne", ("g", "ne", "procedimiento"), ("g", "ne", "funcion")), ("g", "e", "FuncProc"))]
 procedimiento 	= [("cg", "ne", "procedimiento", ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "procedimiento", ";")]
-funcion 		= [("cg", "ne", "funcion",  ("cg", "ne", ("t", "ne", keysList[6])), "(", ("g", "e", "Params"), ")", ("g", "e", "variables"),
+funcion 		= [("cg", "ne", "funcion", ("t", "ne", keysList[6]), "(", ("g", "e", "Params"), ")", ":", ("g", "ne", "tipo"), ("g", "e", "variables"),
                    	"inicio", ("g", "e", "Block"), "fin", "de", "funcion", ";")]
 # Statements
 Block 			= [("cg", "ne", ("g", "e", "estatuto"), ";", ("g", "e", "Block"))]
@@ -64,8 +64,8 @@ estatuto 		= [("cg", "ne", ("|", "ne", ("g", "ne", "si"), "limpia",  ("g", "ne",
 si 				= [("cg", "ne", "si", "(", ("g", "ne", "Exprlog"), ")", "hacer", ("g", "e", "BckEsp"),
 	  				("cg", "e", "sino", ("g", "e", "BckEsp")))]
 BckEsp 			= [("cg", "ne", ("|", "ne", ("g", "e", "estatuto"), ("cg", "ne", "inicio", ("g", "e", "Block"), "fin")))]
-desde 			= [("cg", "ne", "desde", "el", "valor", "de", ("g", "ne", "asigna"), "hasta", ("g", "ne", "exp"),
-             		("cg", "e", ("|", "ne", "inc", "decr"), ("c", "ne", ("t", "ne", keysList[7]))), ("g", "e", "BckEsp"))]
+desde 			= [("cg", "ne", "desde", "el", "valor", "de", ("g", "ne", "asigna"), "hasta", ("g", "ne", "Expr"),
+             		("cg", "e", ("|", "ne", "incr", "decr"), ("t", "ne", keysList[7])), ("g", "e", "BckEsp"))]
 repetir 		= [("cg", "ne", "repetir", ("g", "e", "Block"), "hasta", "que", "(", ("g", "ne", "Exprlog"), ")")]
 mientras 		= [("cg", "ne", "mientras", "se", "cumpla", "que", "(", ("g", "ne", "Exprlog"), ")", ("g", "e", "BckEsp"))]
 asigna 			= [("cg", "ne", ("t", "ne", keysList[6]), ("cg", "e", "[", ("g", "ne", "Udim"), "]"), ":=", ("g", "ne", "Exprlog"))]
