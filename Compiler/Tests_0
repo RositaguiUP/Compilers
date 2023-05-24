@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Archivo de prueba
 
 constantes PI:=3.141592;
@@ -34,6 +35,14 @@ inicio
   regresa (facto);
 fin de funcion;
 
+=======
+constantes rex:=32;
+alfa:= "ocho";
+
+variables a, b:=3, c: entero;
+d,e:=2.1,f:=2.6:real;
+h:="cuarenta":alfabetico;
+>>>>>>> dev-damian
 
 programa
    limpia;
