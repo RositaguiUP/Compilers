@@ -34,7 +34,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
         elif empt:
             return -2, errorMsg, parentEmpty, i
         else:
-            errorMsg = stringError(gramToComp)          # Marks the error
+            errorMsg = stringError(gramToComp, lex[2])          # Marks the error
             return -1, errorMsg, parentEmpty, i
 
     elif isinstance(gramToComp, tuple):
@@ -46,7 +46,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
             elif empt:
                 return -2, errorMsg, parentEmpty, i
             else:
-                errorMsg = tokenError(gramToComp[2])          # Marks the error
+                errorMsg = tokenError(gramToComp[2], lex[2])          # Marks the error
                 return -1, errorMsg, parentEmpty, i
             
         elif (gramToComp[0] == "|"):                    # If it is an or -> one or another
@@ -141,7 +141,7 @@ def checkLex(lex, i, actualState, lexemas, gramToComp, parentEmpty):
                         if not childEmpty or res[2] == False:
                             errorMsg = res[1]
                             if errorMsg != "":
-                                print("Error: " + errorMsg)
+                                print("Error: ", errorMsg)
                             parentErrorCode = -1
                             i = res[3]
                             actualParent = res[2]

@@ -32,19 +32,19 @@ def clsfLex(lex):
 # Function to split a string by defined delimeters
 # Input: string to split, delimeters
 # Output: list with all the elements of the splitted string
-def split_with_delimiters(text, delimiters):
+def split_with_delimiters(text, delimiters, i):
     parts = []
     current_part = ""
     for char in text:
         if char in delimiters:
             if current_part:
-                parts.append(current_part)
-            parts.append(char)
+                parts.append((current_part, i))
+            parts.append((char, i))
             current_part = ""
         else:
             current_part += char
     if current_part:
-        parts.append(current_part)
+        parts.append((current_part, i))
     return parts
 
 # Function to check if the element is an identifier
